@@ -13,3 +13,368 @@
  *= require_tree .
  *= require_self
  */
+ 
+* {
+   margin: 0;
+   padding: 0;
+ }
+ 
+ body {
+   font-family: Avenir,Lato,-apple-system,BlinkMacSystemFont,Helvetica Neue,Hiragino Kaku Gothic ProN,Meiryo,メイリオ,sans-serif;
+   font-size: 13px;
+   /*background-color: #fafafa;*/
+ }
+ 
+ .container {
+  width: 960px;
+  max-width: 960px;
+  margin: 0 auto;
+ }
+ 
+ .baselayout-block {
+   width: 960px;
+   max-width: 960px;
+   margin: 0 auto;
+ }
+ 
+ .clearfix:after{
+   content: "";
+   clear: both;
+   display: block;
+  }
+  
+  .row8 {
+    display: flex;
+    margin-bottom: 8px;
+  }
+  
+  .row {
+  display: flex;
+   margin-bottom: 16px;
+  }
+
+  .row32 {
+   display: flex;
+   margin-bottom: 32px;
+  }  
+/* フラッシュメッセージ */
+.flash-message {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  background: #fff;
+}
+
+.flash-message-success {
+  border: 1px solid #61c780;
+}
+
+.flash-message-danger {
+  border: 1px solid #bd4c53;
+}
+
+.flash-close {
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    top: -webkit-calc(50% - 15px);
+    top: calc(50% - 15px);
+    left: -webkit-calc(100% - 15px);
+    left: calc(100% - 15px);
+    font-size: 18px;
+    border-radius: 50%;
+    color: #8e8e8e;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 2px gray;
+}
+
+.flash-close:hover {
+  cursor: pointer;
+}
+
+.flash-close i {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.flash-success-icon {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px;
+  font-size: 22px;
+  width:22px;
+  height:22px;
+  color: #71e096;
+  background: #61c780;
+}
+
+.flash-danger-icon {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px;
+  font-size: 22px;
+  width:22px;
+  height:22px;
+  color: #d96d70;
+  background: #bd4c53;
+}
+
+.flash-value {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 25px 0 8px;
+  font-size: 16px;
+  color: #666;
+  background-color: #fff;
+}
+ 
+/* ナビゲーションバー */
+
+.header-nav {
+  width: 100%;
+  background-color: #252525;
+}
+
+.header-nav a:hover {
+  background-color: #555;
+  color: #f8dd25;
+}
+
+.nav-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav-list {
+  font-size: 0;
+}
+
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  height: 36px;
+}
+
+.nav-item::before {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  height: 1.2em;
+  margin-top: auto;
+  margin-bottom: auto;
+  content: "";
+}
+
+.nav-item-line::before {
+  background-color: #727272;
+}
+.nav-item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-item span {
+  padding: 0 5px 0 5px;
+}
+
+.nav-profile_img {
+  width: 22px;
+  height: 22px;
+}
+
+/* ログインページ */
+
+.header-login {
+  width: 960px;
+  padding: 48px 8px 0;
+}
+
+.contents-body {
+  width: 368px;
+}
+
+.login-form {
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  border: #9C9F9F solid 2px;
+  box-shadow: 0 0 4px #9C9F9F;
+  background-image: -webkit-linear-gradient(white, #efefec);
+  background-image: linear-gradient(white, #efefec);
+}
+
+.input-login-email {
+  width: 304px;
+  font-size: 16px;
+  padding: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  margin-bottom: 8px;
+}
+
+.input-group-label{
+  display: block;
+  margin-bottom: 4px;
+}
+
+.input-login-password {
+  float: left;
+}
+
+.input-login-password-field {
+  width: 136px;
+  font-size: 16px;
+  padding: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  margin-bottom: 8px;
+}
+
+.button-login {
+  float: right;
+  width: 160px;
+  height: 52px;
+  margin-top: 4px;
+}
+
+.button-login-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 52px;
+  font-size: 20px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 1px #036;
+  border-radius: 6px;
+  background-color: #0cc;
+  background-image: -webkit-linear-gradient(#0cc, #69c);
+  background-image: linear-gradient(#0cc, #69c);
+  cursor: pointer;
+  border: solid 2px;
+  border-color: #09c #069 #036;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.button-signup {
+  margin: 8px;
+  display: block;
+  position: relative;
+  padding: 12px 0;
+  color: #3F3F3F;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid;
+  border-color: #F90 #C70 #950;
+  background-color: #FC0;
+  background-image: -webkit-linear-gradient(#FC0, #F80);
+  background-image: linear-gradient(#FC0, #F80);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.button-signup::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: solid 1px #fe8;
+  border-radius: 8px;
+}
+
+.button-signup-link {
+  text-decoration: none;
+}
+
+.button-signup span {
+  display: block;
+}
+
+.text-button {
+  font-size: 32px;
+  text-shadow: 0 0 2px #930;
+}
+
+/* サインアップ */
+.baselayout-signup {
+   width: 720px;
+   max-width: 720px;
+   margin: 0 auto;
+   text-align: center;
+}
+
+.header-signup {
+  padding: 24px 0;
+}
+
+.header-signup img {
+  display: block;
+  margin: 0 auto 16px;
+}
+
+#title-signup {
+  font-size: 20px;
+  line-height: 1;
+  font-weight: bold;
+}
+
+.signup-form-table td {
+  border-bottom: 1px dotted #ccc;
+  padding: 16px 0;
+  text-align: left;
+}
+
+.signup-td-first {
+  width: 200px;
+}
+
+.signup-label {
+  font-size: 16px;
+}
+
+.signup-email-field {
+  width: 300px;
+  font-size: 16px;
+  border: solid 2px #999F9F;
+  background: #F9FFFF;
+}
+
+.signup-password-field {
+  width: 200px;
+  font-size: 16px;
+  border: solid 2px #999F9F;
+  background: #F9FFFF;
+}
+
+.signup-submit {
+  background: #292F2F;
+  font-size: 16px;
+  color: white;
+  border: 2px solid #090F0F;
+  border-radius: 8px;
+  padding: 8px;
+  background-image: -webkit-linear-gradient(#666C6C, #1C2222);
+  background-image: linear-gradient(#666C6C, #1C2222);
+  cursor: pointer;
+}
+
+/* エラーメッセージ */
+.signup-error {
+  color: #C00;
+}
+
+.signup-error ul {
+  list-style: none;
+}

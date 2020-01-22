@@ -1,0 +1,107 @@
+/* users/show */
+#show_user_card {
+  display: flex;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+}
+
+#show_profile_image_area {
+  font-size: 0;
+  line-height: 0;
+}
+
+.profile_img {
+  width: 160px;
+  height: 160px;
+  font-size: 0;
+  line-height: 0;
+  object-fit: cover;
+}
+
+#show_name_area {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  padding: 0 32px 0 8px;
+}
+
+#name_area_top {
+  width: 224px;
+  max-width: 224px;
+}
+
+#name_area_top p {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+#name_area_top i {
+  display: inline-block;
+  color: #1da1f2;
+}
+
+#show_introduction_area {
+  flex-grow: 5;
+  background: #f8f8f8;
+}
+
+/* users/edit */
+.upload_profile_image_area {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.upload_profile_image_area .upload_icon {
+  position: absolute;
+  top: -webkit-calc(100% - 40px);
+  top: calc(100% - 40px);
+  left: -webkit-calc(100% - 40px);
+  left: calc(100% - 40px);
+  padding: 5px;
+  width: 22px;
+  height: 22px;
+  font-size: 22px;
+  color: #fff;
+  background: #c8c8c0;
+  border-radius: 50%;
+  opacity: 0.9;
+  z-index: 2;
+  cursor: pointer;
+}
+
+#img_field {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: hidden;
+  box-sizing: inherit;
+  z-index: 1;
+}
+
+#img_field .profile_image_blank {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 160px;
+  height: 160px;
+  color: #c8c8c0;
+  background: #f8f8f8;
+  border: 2px dashed #c8c8c0;
+  border-radius: 5px;
+  box-sizing: inherit;
+}
+
+#img_field .profile_image_blank p {
+  font-size: 18px;
+}

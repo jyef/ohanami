@@ -1,0 +1,42 @@
+<div class="row"></div>
+  <%= render 'layouts/flash_messages' %>
+<div class="row"></div>
+
+<%= form_with(model:@user, remote: true) do |f| %>
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  
+  <%= link_to "パスワードの変更", :edit_password %>
+  
+  <div>
+    <%= f.label :nickname %>
+    <%= f.text_field :nickname %>
+  </div>
+  
+  <div>
+    <%= f.label :introduction %>
+    <%= f.text_field :introduction %>
+  </div>
+  
+  <div>
+    <%= f.label :twitter %>
+    <i class="fas fa-at"></i><%= f.text_field :twitter %>
+  </div>
+
+  <div class="field image upload_profile_image_area">
+    <i class="fas fa-file-upload upload_icon" onClick="$('#file').click()" ></i>
+      <div id="img_field" onClick="$('#file').click()" >
+        <% if @user.profile_image.url.present? %>
+          <%= image_tag ( @user.profile_image.url ), class: 'profile_img' %>
+        <% else %>
+          <div class="profile_image_blank"><p>ファイルを選択</p></div>
+        <% end %>
+      </div>
+  </div>
+    <%= f.file_field :profile_image, class: "image", style: "display:none;", id: "file"%>
+    <p><%= f.check_box :remove_profile_image %>画像を削除する</p>
+  
+  　　<%= f.button '更新する', type: 'button', onclick: 'submit();', class: 'btn btn-primary' %>
+<% end %>

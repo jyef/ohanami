@@ -1,0 +1,26 @@
+
+[1mFrom:[0m /home/ec2-user/environment/ohanami/app/controllers/passwords_controller.rb @ line 18 PasswordsController#update:
+
+    [1;34m12[0m: [32mdef[0m [1;34mupdate[0m
+    [1;34m13[0m: @user = current_user
+    [1;34m14[0m: current_password = params[[33m:user[0m][[33m:current_password[0m]
+    [1;34m15[0m: 
+    [1;34m16[0m:   [32mif[0m current_password.present?
+    [1;34m17[0m:     [32mif[0m @user.authenticate(current_password)
+ => [1;34m18[0m:       binding.pry
+    [1;34m19[0m:       @user.assign_attributes(params[[33m:user[0m])
+    [1;34m20[0m:       [32mif[0m @user.save
+    [1;34m21[0m:         redirect_to [33m:user[0m, [35mnotice[0m: [31m[1;31m"[0m[31mパスワードを変更しました。[1;31m"[0m[31m[0m
+    [1;34m22[0m:       [32melse[0m
+    [1;34m23[0m:         render [31m[1;31m"[0m[31medit[1;31m"[0m[31m[0m
+    [1;34m24[0m:       [32mend[0m
+    [1;34m25[0m:     [32melse[0m
+    [1;34m26[0m:       @user.errors.add([33m:current_password[0m, [33m:wrong[0m)
+    [1;34m27[0m:       render [31m[1;31m"[0m[31medit[1;31m"[0m[31m[0m
+    [1;34m28[0m:     [32mend[0m
+    [1;34m29[0m:   [32melse[0m
+    [1;34m30[0m:     @user.errors.add([33m:current_password[0m, [33m:empty[0m)
+    [1;34m31[0m:     render [31m[1;31m"[0m[31medit[1;31m"[0m[31m[0m
+    [1;34m32[0m:   [32mend[0m
+    [1;34m33[0m: [32mend[0m
+

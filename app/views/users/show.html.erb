@@ -1,0 +1,66 @@
+<%#----------ユーザー登録後モーダル表示ここから----------%>
+<% if flash[:modal_open] %>
+  <div id="con" class="modal-content">
+      <p class="modal-title">ユーザー登録が完了しました</p>
+      <div id="modal-content-content">
+        <p class="row">まずはプロフィールを設定しましょう。
+        プロフィールにはサイト上で表示するニックネームやプロフィール画像、自己紹介文などが設定できます。</p>
+        <div class="modal-close"><i class="fas fa-times"></i></div>
+        <%= link_to edit_user_path(@user) do %>
+          <div class="profile_button">
+            <div class="profile_button_content">
+              <i class="fas fa-cog"></i><p>プロフィール設定</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
+  <script>
+  modalopen('con');
+  </script>
+<% end %>
+<%#----------ここまでユーザー登録後モーダル表示----------%>
+
+<div class="row"></div>
+  <%= render 'layouts/flash_messages' %>
+<div class="row"></div>
+
+<div id="show_user_card">
+<%#----------プロフィール画像----------%>
+  <div id="show_profile_image_area">
+    <%= image_tag ( @user.profile_image.blank? ? "/assets/default.png" : @user.profile_image.url ), class: 'profile_img' %>
+  </div>
+<%#----------ニックネームとプロフィール編集へのリンク----------%>
+  <div id="show_name_area">
+    <div id="name_area_top">
+      <p id="users_show_nickname">
+      <% unless @user.nickname.blank? %>
+        <%= "#{@user.nickname} さん" %>
+      <% else %>
+        <%= "ナナシ さん" %>
+      <% end %>
+      </p>
+      
+      <% unless @user.twitter.blank? %>
+        <%= link_to "https://twitter.com/#{@user.twitter}" do %>
+          <i class="fab fa-twitter-square twitter_icon fa-2x"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div id="name_area_bottom">
+      <% if @user == current_user %>
+        <%= link_to edit_user_path(@user) do %>
+          <div class="profile_button">
+            <div class="profile_button_content">
+              <i class="fas fa-cog"></i><p>プロフィール設定</p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<%#----------自己紹介----------%>
+  <div id="show_introduction_area">
+    <p><%= @user.introduction %></p>
+  </div>
+</div>

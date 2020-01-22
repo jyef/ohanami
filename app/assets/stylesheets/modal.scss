@@ -1,0 +1,100 @@
+.modal-overlay {
+    z-index:1;
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:120%;
+    background-color:rgba(0,0,0,0.75);
+}
+
+.modal-open {
+    color:#00f;
+    text-decoration:underline;
+}
+ 
+.modal-open:hover {
+    cursor:pointer;
+    color:#f00;
+}
+ 
+.modal-close {
+    display: inline-block;
+    position: absolute;
+    top: -20px;
+    left: -webkit-calc(100% - 20px);
+    left: calc(100% - 20px);
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    border-radius: 50%;
+    color: #ff1493;
+    border: 2px solid #ff1493;
+    background-color: #fff;
+}
+ 
+.modal-close:hover {
+    cursor:pointer;
+    color: #fff;
+    border: 2px solid #ff1493;
+    background-color: #ff1493;
+    transition-duration: 0.3s;
+}
+
+.modal-content {
+    position:fixed;
+    display:none;
+    z-index:2;
+    width:50%;
+    margin:0;
+    top: 0px;
+    border:2px solid #ff1493;
+    background:#fff;
+    border-radius: 6px;
+}
+
+.modal-content a {
+  color: #000;
+  text-decoration: none;
+}
+ 
+.modal-content > .modal-title {
+    width: 100%;
+    margin: 0;
+    padding: 10px 0 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #ff1493;
+}
+
+#modal-content-content {
+    text-align: center;
+    padding: 16px;
+    font-size:13px;
+}
+
+.profile_button {
+    display: inline-block;
+    border: 1px solid #ff1493;
+    padding: 10px 10px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.profile_button i {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 24px;
+    color: #ff1493;
+    margin-right: 4px;
+}
+
+.profile_button p {
+    display: inline-block;
+    vertical-align:middle;
+    font-size: 16px;
+    color: #ff1493;
+}

@@ -1,0 +1,43 @@
+<script>
+  $('.header-nav').hide();
+</script>
+
+<div class="baselayout-block header-login">
+  <%= link_to root_path do %>
+    <%= image_tag('logo_small.png') %>
+  <% end %>
+</div>
+
+<div class="row"></div>
+  <%= render 'layouts/flash_messages' %>
+<div class="row"></div>
+  
+<div class="baselayout-block">
+  <div class="contents-body">
+    <div class="login-form row clearfix">
+      <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+    
+        <p>
+          <%= f.label :email, 'メールアドレス', class: 'input-group-label' %>
+          <%= f.email_field :email, class: 'input-login-email' %>
+        </p>
+    
+        <p class="input-login-password">
+          <%= f.label :password, 'パスワード', class: 'input-group-label' %>
+          <%= f.password_field :password, class: 'input-login-password-field' %>
+        </p>
+        
+        <p class="button-login">
+          <%= f.submit 'ログイン', class: 'button-login-button' %>
+        </p>
+      <% end %>
+    </div>
+    
+    <%= link_to signup_path , class: 'button-signup-link' do %>
+      <div class="button-signup">
+        <span>はじめての方は登録手続きへお進みください。</span>
+        <span class="text-button">新規ユーザー登録</span>
+      </div>
+    <% end %>
+  </div>
+</div>

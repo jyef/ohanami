@@ -1,0 +1,41 @@
+<script>
+  $('.header-nav').hide();
+</script>
+
+<div class="baselayout-signup">
+  <div class="header-signup">
+    <%= link_to root_path do %>
+      <%= image_tag('logo_small.png') %>
+    <% end %>
+    <p id="title-signup">新規ユーザー登録</p>
+  </div>
+  
+  
+  <%= form_with(model: @user, local: true) do |f| %>
+  <div class="signup-error">
+    <%= render 'layouts/error_messages', model: f.object %>
+  </div>
+    <table width="720px" class="signup-form-table row">
+      <tbody>
+        <tr>
+          <td class="signup-td-first"><p class="signup-label"><%= f.label :email, 'メールアドレス：' %></p></td>
+          <td><%= f.email_field :email, class: 'signup-email-field' %></td>
+        </tr>
+        <tr>
+          <td class="signup-td-first">
+            <p class="signup-label"><%= f.label :password, 'パスワード：' %></p>
+            <p>半角英数記号6〜32字以内</P>
+          </td>
+          <td>
+            <%= f.password_field :password, class: 'signup-password-field row8' %>
+            <p class="row8">パスワード(再入力)：</p>
+            <%= f.password_field :password_confirmation, class: 'signup-password-field' %>
+          </td>
+        </tr>
+      </tbody>
+    </table> 
+    
+    <p class="row">上記の内容でよろしければ、登録ボタンを押してください。</p>
+    <%= f.submit 'ユーザー登録する', class: 'signup-submit' %>
+  <% end %>
+</div>

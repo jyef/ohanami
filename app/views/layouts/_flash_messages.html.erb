@@ -1,0 +1,23 @@
+<% flash.each do |k, v| %>
+  <% unless k == 'modal_open' %>
+    <div class="flash-message flash-message-<%= k %>">
+      <div class="flash-close">
+        <i class="fas fa-times"></i>
+      </div>
+      <% if k == 'success' %>
+        <i class="fas fa-check flash-<%= k %>-icon"></i>
+      <% elsif %>
+        <i class="fas fa-times flash-<%= k %>-icon"></i>
+      <% end %>
+      <div class="flash-value">
+        <%= v %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<script>
+  $('.flash-close').click(function(){
+    $('.flash-message').remove();
+  })
+</script>

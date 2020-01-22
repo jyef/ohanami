@@ -1,0 +1,38 @@
+<header class="header-nav">
+  <div class="baselayout-block">
+    <nav class="nav-main">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <%= link_to root_path do %>
+            <span>トップページ</span>
+          <% end %>
+        </li>
+      </ul>
+  
+      <% if logged_in? %>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <%= link_to user_path(current_user) do %>
+              <%= image_tag ( current_user.profile_image.nil? ? current_user.profile_image.url : "/assets/default.png" ), class: 'nav-profile_img' %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to user_path(current_user) do %>
+              <% if current_user.nickname? %>
+                <span><%= current_user.nickname %> さん</span>
+              <% else %>
+               <span>ナナシ さん</span>
+              <% end %>
+            <% end %>
+          </li>
+          <li class="nav-item nav-item-line"><%= link_to logout_path, method: :delete do %><span>ログアウト</span><% end %></li>
+        </ul>
+      <% else %>
+        <ul class="nav-list">
+          <li class="nav-item"><%= link_to signup_path do %><span>新規登録</span><% end %></li>
+          <li class="nav-item nav-item-line"><%= link_to login_path do %><span>ログイン</span><% end %></a></li>
+        </ul>
+      <% end %>
+    </nav>
+  </div>
+</header>
