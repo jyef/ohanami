@@ -47,6 +47,72 @@
   background: #f8f8f8;
 }
 
+#user_show_games_area {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  // border: 1px solid gray;
+}
+
+#user_show_games_tab_area {
+  display: flex;
+  width: 100%;
+  border-bottom: 4px solid #ff1493;
+  box-sizing: inherit;
+}
+
+#user_show_games_area .tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  margin-right: 1px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+  box-sizing: inherit;
+}
+
+#user_show_games_area #tab_link {
+ text-decoration: none; 
+}
+
+#user_show_games_area #tab_active {
+  color: #fff;
+  background: #ff1493;
+  box-sizing: inherit;
+}
+
+#user_show_games_area #tab_inactive {
+  color: #8c8c8c;
+  background: #f2f2f2;
+  box-sizing: inherit;
+}
+
+#user_show_games_area #tab_inactive:hover {
+  color: #fff;
+  background: #ff1493;
+}
+
+/* users/:id/reviews */
+#user_show_reviews_area {
+  
+}
+
+.user_show_reviews_title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #3c3c3c;
+  margin: 10px 0 3px;
+}
+
+.user_show_reviews_title:before {
+  border-left: 6px solid #ff1493;
+  margin-right: 8px;
+  content: "";
+}
+
 /* users/edit */
 .upload_profile_image_area {
   position: relative;
@@ -74,7 +140,7 @@
   cursor: pointer;
 }
 
-#img_field {
+.user_img_field {
   position: absolute;
   width: 160px;
   height: 160px;
@@ -87,7 +153,7 @@
   z-index: 1;
 }
 
-#img_field .profile_image_blank {
+.user_img_field .profile_image_blank {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -102,6 +168,12 @@
   box-sizing: inherit;
 }
 
-#img_field .profile_image_blank p {
+.user_img_field .profile_image_blank p {
   font-size: 18px;
+}
+
+.user_edit_profile_image {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
 }

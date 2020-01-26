@@ -1,3 +1,7 @@
 <div class="row"></div>
   <%= render 'layouts/flash_messages' %>
 <div class="row"></div>
+
+<% @games.each do |game| %>
+  <%= link_to (game.title.blank? ? 'Titleなし' : game.title), game_path(game) %>
+<% end %>

@@ -44,6 +44,10 @@ class UsersController < ApplicationController
     end
   end
   
+  def myreviews
+    @user = User.find(params[:id])
+  end
+  
   private
   
   def user_params

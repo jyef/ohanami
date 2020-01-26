@@ -12,4 +12,27 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :games
+  has_many :reviews
+  has_many :review_games, through: :reviews, source: :game
+  has_many :stamps
+  has_many :have_stamps, through: :stamps, source: :game
+  has_many :likes
+  has_many :myfavorites, through: :likes, source: :review
+  
+  def favorite(review)
+      self.likes.find_or_create_by(review_id: review.id)
+  end
+  
+  def unfavorite(review)
+    favorite = self.likes.find_by(review_id: review.id)
+    favorite.destroy if favorite
+  end
+  
+  def likeit?(review)
+    self.myfavorites.include?(review)
+  end
+  
+  def have_stamp?(game)
+    self.have_stamps.include?(game)
+  end
 end

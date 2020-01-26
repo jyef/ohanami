@@ -1,0 +1,40 @@
+<div id="show_user_card">
+  <div id="show_profile_image_area">
+    <%= image_tag ( user.profile_image.blank? ? "/assets/default.png" : user.profile_image.url ), class: 'profile_img' %>
+  </div>
+  
+  <div id="show_name_area">
+    <div id="name_area_top">
+      <p id="users_show_nickname">
+      <% unless user.nickname.blank? %>
+        <%= "#{user.nickname}".truncate(18) + " さん" %>
+      <% else %>
+        <%= "ナナシ さん" %>
+      <% end %>
+      </p>
+      
+      <% unless user.twitter.blank? %>
+        <%= link_to "https://twitter.com/#{user.twitter}" do %>
+          <i class="fab fa-twitter-square twitter_icon fa-2x"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div id="name_area_bottom">
+      <% if user == current_user %>
+        <%= link_to edit_user_path(user) do %>
+          <div class="profile_button">
+            <div class="profile_button_content">
+              <i class="fas fa-cog"></i><p>プロフィール設定</p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div id="show_introduction_area">
+    <p><%= user.introduction %></p>
+  </div>
+</div>
+
+<div class="row32"></div>

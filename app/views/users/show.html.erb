@@ -25,42 +25,19 @@
   <%= render 'layouts/flash_messages' %>
 <div class="row"></div>
 
-<div id="show_user_card">
-<%#----------プロフィール画像----------%>
-  <div id="show_profile_image_area">
-    <%= image_tag ( @user.profile_image.blank? ? "/assets/default.png" : @user.profile_image.url ), class: 'profile_img' %>
-  </div>
-<%#----------ニックネームとプロフィール編集へのリンク----------%>
-  <div id="show_name_area">
-    <div id="name_area_top">
-      <p id="users_show_nickname">
-      <% unless @user.nickname.blank? %>
-        <%= "#{@user.nickname} さん" %>
-      <% else %>
-        <%= "ナナシ さん" %>
-      <% end %>
-      </p>
-      
-      <% unless @user.twitter.blank? %>
-        <%= link_to "https://twitter.com/#{@user.twitter}" do %>
-          <i class="fab fa-twitter-square twitter_icon fa-2x"></i>
-        <% end %>
-      <% end %>
-    </div>
-    <div id="name_area_bottom">
-      <% if @user == current_user %>
-        <%= link_to edit_user_path(@user) do %>
-          <div class="profile_button">
-            <div class="profile_button_content">
-              <i class="fas fa-cog"></i><p>プロフィール設定</p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+<%= render 'users/card', user: @user %>
+
+<% @user.games.each do |game| %>
+  <div id="user_show_games_area">
+    <div id="user_show_games_tab_area">
+      <div class="tab" id="tab_active">
+        <p>登録ゲーム</p>
+      </div>
+      <a href=<%= myreviews_user_path(@user) %> id="tab_link">
+        <div class="tab" id="tab_inactive">
+          <p>投稿した感想</p>
+        </div>
+      </a>
     </div>
   </div>
-<%#----------自己紹介----------%>
-  <div id="show_introduction_area">
-    <p><%= @user.introduction %></p>
-  </div>
-</div>
+<% end %>

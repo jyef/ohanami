@@ -19,9 +19,22 @@
    padding: 0;
  }
  
+ a:link {
+   color: #14171a;
+   text-decoration: none;
+ }
+  a:visited {
+   color: #14171a;
+   text-decoration: none;
+ }
+ a:hover {
+   color: #14171a;
+   text-decoration: underline;
+ }
+ 
  body {
    font-family: Avenir,Lato,-apple-system,BlinkMacSystemFont,Helvetica Neue,Hiragino Kaku Gothic ProN,Meiryo,メイリオ,sans-serif;
-   font-size: 13px;
+   font-size: 14px;
    /*background-color: #fafafa;*/
  }
  
@@ -57,6 +70,77 @@
    display: flex;
    margin-bottom: 32px;
   }  
+  
+/* フォームデザイン*/
+/* セレクトボックスのデザイン統一 */
+select{
+    outline:none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    background: none transparent;
+    vertical-align: middle;
+    font-size: inherit;
+    color: inherit;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+}
+select option{
+  background-color: #fff;
+  color: #333;
+}
+select::-ms-expand {
+  display: none;
+}
+select:-moz-focusring { 
+  color: transparent; 
+  text-shadow: 0 0 0 #828c9a;
+}
+
+.pt20{
+  padding-top: 20px;
+}
+.inverse{
+  background: #000;
+  padding: 20px 0;
+  color: #fff;
+}
+.select-wrap {
+    position: relative;
+}
+.select-wrap:before {
+    z-index: 1;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    content: "\f123";
+    font-family: "IonIcons";
+    line-height: 43px;
+    color: #7F878C;
+    pointer-events: none;
+}
+select{
+    outline:none;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    background: none transparent;
+    height: 40px;
+    padding: 8px 12px;
+    border:1px solid #ddd;
+    color:#252525;
+    border-radius:3px;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select:-moz-focusring { 
+  color: transparent; 
+  text-shadow: 0 0 0 #828c9a;
+}
+  
 /* フラッシュメッセージ */
 .flash-message {
   display: inline-block;

@@ -1,0 +1,14 @@
+<%= form_with(model: @review, local: true) do |f| %>
+  <div>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+  
+  <div>
+    <%= f.label :spoiler %>
+    <%= f.check_box :spoiler %>
+  </div>
+  
+  <%= hidden_field_tag :referer, request.referer %>
+  <%= f.button '更新する', type: 'button', onclick: 'submit();', class: 'btn btn-primary' %>
+<% end %>

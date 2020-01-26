@@ -1,0 +1,99 @@
+<div class="row"></div>
+  <%= render 'layouts/flash_messages' %>
+<div class="row"></div>
+
+<%= render 'users/card', user: @user %>
+
+<% @user.games.each do |game| %>
+  <div id="user_show_games_area">
+    <div id="user_show_games_tab_area">
+      <a href=<%= user_path(@user) %> id="tab_link">
+        <div class="tab" id="tab_inactive">
+          <p>登録ゲーム</p>
+        </div>
+      </a>
+      <div class="tab" id="tab_active">
+        <p>投稿した感想</p>
+      </div>
+    </div>
+    
+    <div class="row32"></div>
+    
+    <div id="user_show_reviews_area">
+      <% @user.reviews.each do |review| %>
+      <a href="<%= game_path(review.game_id) %>"><p class="user_show_reviews_title"><%= Game.find(review.game_id).title %></p></a>
+      <div id="review_list">
+        <div class="review_list_left">
+          <%= image_tag( review.user.profile_image.url ) %>
+        </div>
+        <div class="review_list_right">
+          <div class="review_list_right_top">
+            <%= link_to user_path(review.user_id), class: 'review_list_right_top_nickname' do %><p><%= review.user.nickname.truncate(18) + " さん" %></p><% end %>
+            <p><%= review.created_at.strftime('%Y年%m月%d日') %></p>
+          </div>
+          <div class="review_list_right_middle">
+            <% if review.spoiler? %>
+              <div id="caution<%= review.id %>">
+                <p class="spoiler">※ネタバレ※</p>
+                <p>この感想には、作品のネタバレに関する記述が含まれています。</p>
+                <p class="disp_review">
+                  <button id="btn_click<%= review.id %>" class="btn_click"><i class="fas fa-caret-down"></i></button>
+                  <a href="#" id="btn_click<%= review.id %>" class="btn_click" onclick="return false;">感想を表示する</a>
+                </p>
+              </div>
+              <div id="tab<%= review.id %>" style="display: none">
+                <%# review.content += "　(編集済み)" if review.edited? %><%#= simple_format(review.content, {}, sanitize: false) %>
+                <pre class="<%= 'edited' if review.edited? %>"><%= review.content %></pre>
+              </div>
+            <% else %>
+              <pre class="<%= 'edited' if review.edited? %>"><%= review.content %></pre>
+            <% end %>
+          </div>
+          <div class="review_list_right_bottom">
+            <% if logged_in? && review.user_id == current_user.id %>
+              <%= link_to edit_review_path(id: review.id) do %><i class="fas fa-edit"></i><% end %>
+              <%= form_with(model: current_user.reviews.find_by(id: review.id), local: true, method: :delete) do |f| %>
+                <%= button_tag type: 'submit', data: {confirm: "削除しますか？"} do %><i class="fas fa-trash-alt"></i><% end %>
+              <% end %>
+            <% end %>
+            <% if logged_in? %>
+              <% if current_user.likeit?(review) %>
+                <%= form_with(model: review.likes.find_by(review_id: review.id), local: true, method: :delete) do |f| %>
+                  <%= hidden_field_tag :review_id, review.id %>
+                  <%= button_tag type: 'submit' do %>
+                    <i class="fas fa-heart fa-heart-on"></i>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <%= form_with(model: review.likes.build, local: true) do |f| %>
+                  <%= hidden_field_tag :review_id, review.id %>
+                  <%= button_tag type: 'submit' do %>
+                    <i class="fas fa-heart fa-heart-off"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% else %>
+              <button onClick="disp()"><i class="fas fa-heart"></i></button>
+            <% end %>
+            <p><%= "#{review.likes.count}" %></p><p>いいね</p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    
+    </div>
+  </div>
+<% end %>
+
+<script>
+  $('.btn_click').click(function(){
+    var id = $(this).attr('id');
+    id = id.replace("btn_click", "");
+    $('#caution' + id).hide();
+    $('#tab' + id).show();
+  });
+  
+  function disp(){
+  	window.alert('いいね！するには、ログインが必要です。');
+  }
+</script>
