@@ -34,5 +34,7 @@ module Ohanami
     config.i18n.default_locale = :ja
     # field_with_errors勝手に挿入防止
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+    
+    config.assets.initialize_on_precompile = false
   end
 end
