@@ -1,5 +1,11 @@
 class ToppagesController < ApplicationController
   def index
-    @games = Game.order("rand()").all
+    @reviews = Review.limit(10).order("created_at DESC")
+    
+    if params[:title].present?
+      @games = Game.where('title LIKE ?', "%#{params[:title]}%")
+    else
+      @games = Game.order("rand()").all
+    end
   end
 end

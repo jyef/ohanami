@@ -1,7 +1,35 @@
-<div class="row"></div>
-  <%= render 'layouts/flash_messages' %>
-<div class="row"></div>
-
-<% @games.each do |game| %>
-  <%= link_to (game.title.blank? ? 'Titleなし' : game.title), game_path(game) %>
-<% end %>
+<% @thisPage = 'toppage' %>
+<div id="toppage">
+  <div id="toppage_header_area">
+    <div style="display: flex; justify-content: space-between;">
+      <%= link_to root_path do %><%= image_tag "logo_small.png", id: "logo" %><% end %>
+      <div style="width: 650px; height: 114px; background: #ddd; margin-top: 20px;">仮置き</div>
+    </div>
+    
+    <div class="row"></div>
+      <%= render 'layouts/flash_messages' %>
+    <div class="row"></div>
+  </div>
+  
+  <div id="toppange_main_area">
+    <%= form_with url: root_path, method: :get, local: true, class: "searchForm" do |f| %>
+      <%= f.text_field :title, placeholder: "タイトルで検索" %>
+      <span><i class="fas fa-search"></i><input type="submit" value="さがす" class="search_button"></span>
+    <% end %>
+    <div class="row32"></div>
+    <%= render 'toppages/gamecard', games: @games, thisPage: @thisPage %>
+  </div>
+  
+  <div id="toppgage_review_area">
+    <h2>みんなの感想</h2>
+    <div id="toppgage_review_area_content">
+      <h3>最新10件</h3>
+      <% @reviews.each do |review| %>
+        <%= link_to game_path(review.game_id, anchor: "anchor#{review.id}") do %>
+          <h4><%= Game.find(review.game_id).title %></h4>
+          <p><%= review.spoiler ? "※ネタバレあり" : review.content.truncate(43) %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

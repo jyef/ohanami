@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   get 'signup', to: 'users#new'
   root to: 'toppages#index'
+  
   resources :users, only: [:index, :show, :create, :edit, :update] do
     member do
       get :myreviews

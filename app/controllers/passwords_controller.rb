@@ -18,7 +18,7 @@ class PasswordsController < ApplicationController
         @user.assign_attributes(user_params)
         if @user.save
           flash[:success] = 'パスワードを変更しました。'
-          redirect_to controller: 'users', action: 'edit', id: current_user.id
+          redirect_to controller: 'users', action: 'show', id: current_user.id
         else
           render "edit"
         end

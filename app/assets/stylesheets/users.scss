@@ -47,6 +47,29 @@
   background: #f8f8f8;
 }
 
+.profile_button {
+    display: inline-block;
+    border: 1px solid #ff1493;
+    padding: 10px 10px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.profile_button i {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 24px;
+    color: #ff1493;
+    margin-right: 4px;
+}
+
+.profile_button p {
+    display: inline-block;
+    vertical-align:middle;
+    font-size: 16px;
+    color: #ff1493;
+}
+
 #user_show_games_area {
   display: flex;
   flex-direction: column;
@@ -93,6 +116,11 @@
 #user_show_games_area #tab_inactive:hover {
   color: #fff;
   background: #ff1493;
+}
+
+#user_show_gameCard_area {
+  display: block;
+  width: 685px;
 }
 
 /* users/:id/reviews */

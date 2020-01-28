@@ -1,0 +1,28 @@
+<div id="gameCard_area">
+  <ul>
+    <% games.each do |game| %>
+      <li>
+          <% if thisPage == "user_show" && game.user_id == current_user.id %>
+            <%= link_to edit_game_path(game) do %>
+              <div class="gameEdit_button">
+                <span><i class="fas fa-cog user_show_gameEdit_i"></i><p class="user_show_gameEdit_p">このゲームを編集する</p></span>
+              </div>
+            <% end %>
+          <% end %>
+        <%= link_to game_path(game) do %>
+          <div class="gameCard">
+            <i class="fas fa-chevron-right"></i>
+            <div class="gameCard_icon_wrap">
+              <div class="gameCard_icon" style="background-image: url(<%= game.icon.url %>);"></div>
+            </div>
+            <div class="gameCard_title">
+              <h3><%= game.title.truncate(23) %></h3>
+            </div>
+            <p class="gameCard_content"><%= game.information.truncate(53) %></p>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<%= '検索結果に一致する条件が見つかりませんでした' if thisPage == 'toppage' && games.length == 0 %>

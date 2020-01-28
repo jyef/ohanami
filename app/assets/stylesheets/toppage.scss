@@ -1,0 +1,255 @@
+$color-theme: #ff1493;
+$card-width: calc(207px - .1px);
+$card-height: 350px;
+$icon-height: calc(207px * 0.765 - .1px);
+
+#gameCard_area {
+  width: 685px;
+  
+  a {
+      display: block;
+      text-decoration: none;
+  }
+  
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  
+  li {
+    width: $card-width;
+    box-sizing: border-box;
+  }
+  
+  ul li {
+    margin-bottom: 42px;
+  }
+  
+  ul li:not(:nth-child(3n)) {
+    margin-right: 32px;
+  }
+  
+  .gameCard {
+    height: $card-height;
+    border-bottom: 1px solid #d9d9d9;
+    position: relative;
+    color: #3c3c3c;
+    &:hover .gameCard_title {
+      color: $color-theme;
+    }
+    .fa-chevron-right {
+      position: absolute;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 10px;
+      width: 15px;
+      height: 15px;
+      line-height: 15px;
+      color: #fff;
+      background: $color-theme;
+      border-radius: 50%;
+      top: calc(100% - 30px);
+      left: calc(100% - 15px);
+    }
+    .gameCard_title {
+      height: 48px;
+      margin: 8px 0 12px;
+    }
+    h3 {
+      padding-left: 7px;
+      border-left: 5px solid $color-theme;
+    }
+    .gameCard_content {
+      color: #737373;
+    }
+    .gameCard_icon_wrap {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: $icon-height;
+      
+      .gameCard_icon {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition-duration: 0.5s;
+        &:hover {
+          transition-duration: 0.5s;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+
+#toppage {
+  width: 960px;
+  box-sizing: border-box;
+  
+  #toppage_header_area {
+    width: 100%;
+    box-sizing: inherit;
+    
+    #logo {
+      margin-top: 16px;
+    }
+  }
+    
+  #toppange_main_area {
+    float: left;
+    width: 685px;
+    box-sizing: inherit;
+  }
+  
+  #toppgage_review_area {
+    float: right;
+    width: 240px;
+    box-sizing: inherit;
+    
+    h2 {
+      position: relative;
+      color: #fff;
+      font-size: 20px;
+      background: $color-theme;
+      margin: 0 0 0 -10px;
+      padding: 4px 10px;
+      box-shadow: 0 1px 1px rgba(0,0,0,1);
+      &:before {
+          position: absolute;
+          top: 100%;
+          content: "";
+          width: 0;
+          height: 0;
+          border: 5px solid transparent;
+          border-top: 5px solid #000;
+      }
+      &:before {
+          left: 0;
+          border-right: 5px solid #000;       
+      }
+    }
+    
+    #toppgage_review_area_content {
+      padding: 8px 10px 15px 10px;
+      border: 1px solid #e6e6e6;
+      box-sizing: inherit;
+      
+      h3{
+        color: #3c3c3c;
+        margin-bottom: 10px;
+      }
+      
+      h4 {
+        color: #3c3c3c;
+      }
+  
+      p {
+        color: #737373;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+.searchForm {
+  display: flex;
+  input#title {
+    width: 40%;
+    padding: .5em;
+    font-size: 16px;
+    border: 2px solid #c8c8c8;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    &::-ms-input-placeholder {
+      color: #cccccc;
+    }
+    &::placeholder {
+      color: #cccccc;
+    }
+  }
+  span {
+    position: relative;
+    display: block;
+    border: 2px solid #c8c8c8;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    background-color: #f8f8f8;
+  }
+  i {
+    display: flex;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #c8c8c8;
+    pointer-events: none;
+  }
+  .search_button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    overflow: hidden;
+    text-indent: 200%;
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.gameEdit_button {
+  display: inline-block;
+  position: relative;
+  width: $card-width;
+  border: 1px solid #ff1493;
+  padding: 10px 10px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: calc(100% - 4px);
+    margin-left: -10px;
+    width: 10px;
+    height: 10px;
+    border-right: solid 1px $color-theme;
+    border-bottom: solid 1px $color-theme;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: #fff;
+  }
+  
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .user_show_gameEdit_i {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    color: #ff1493;
+    margin-right: 4px;
+  }
+  
+  .user_show_gameEdit_p {
+    display: inline-block;
+    vertical-align:middle;
+    font-size: 15px;
+    color: #ff1493;
+  }
+}

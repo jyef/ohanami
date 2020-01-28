@@ -1,13 +1,13 @@
-<%= form_with(model: @game, local: true) do |f| %>
+<%= form_with(model: @game, local: true, class: 'form_general') do |f| %>
   
   <div>
     <%= f.label :title %>
-    <%= f.text_area :title %>
+    <%= f.text_field :title %>
   </div>
   
   <div>
     <%= f.label :url %>
-    <%= f.text_area :url %>
+    <%= f.text_field :url %>
   </div>
   
   <div class="field image upload_game_img_area">
@@ -25,7 +25,7 @@
   
   <div>
     <%= f.label :genre %>
-    <%= f.text_area :genre %>
+    <%= f.text_field :genre %>
   </div>
   
   <div>
@@ -35,82 +35,84 @@
   
   <div>
     <%= f.label :play_time %>
-    <%= f.text_area :play_time %>
+    <%= f.text_field :play_time %>
   </div>
 
-<div id="game_edit_intro_image_area">
-  <div id="game_edit_intro_image_area_top">
-    <div class="game_edit_intro_image_area_element">
-      <div class="field image upload_game_img_area">
-        <i class="fas fa-file-upload upload_icon" onClick="$('#file2').click()" ></i>
-        <div class="img_field img_field2" onClick="$('#file2').click()" >
-          <% if @game.intro_image1.url.present? %>
-            <%= image_tag ( @game.intro_image1.url ), class: "game_edit_image" %>
-          <% else %>
-            <div class="game_img_blank"><p>ファイルを選択</p></div>
-          <% end %>
+  <div id="game_edit_intro_image_area">
+    <div id="game_edit_intro_image_area_top">
+      <div class="game_edit_intro_image_area_element">
+        <div class="field image upload_game_img_area">
+          <i class="fas fa-file-upload upload_icon" onClick="$('#file2').click()" ></i>
+          <div class="img_field img_field2" onClick="$('#file2').click()" >
+            <% if @game.intro_image1.url.present? %>
+              <%= image_tag ( @game.intro_image1.url ), class: "game_edit_image" %>
+            <% else %>
+              <div class="game_img_blank"><p>ファイルを選択</p></div>
+            <% end %>
+          </div>
         </div>
+        <%= f.file_field :intro_image1, class: "image", style: "display:none;", id: "file2"%>
+        <p><%= f.check_box :remove_intro_image1 %>画像を削除する</p>
       </div>
-      <%= f.file_field :intro_image1, class: "image", style: "display:none;", id: "file2"%>
-      <p><%= f.check_box :remove_intro_image1 %>画像を削除する</p>
+      <div class="game_edit_intro_image_area_element">
+        <div class="field image upload_game_img_area">
+          <i class="fas fa-file-upload upload_icon" onClick="$('#file3').click()" ></i>
+          <div class="img_field img_field3" onClick="$('#file3').click()" >
+            <% if @game.intro_image2.url.present? %>
+              <%= image_tag ( @game.intro_image2.url ), class: "game_edit_image" %>
+            <% else %>
+              <div class="game_img_blank"><p>ファイルを選択</p></div>
+            <% end %>
+          </div>
+        </div>
+        <%= f.file_field :intro_image2, class: "image", style: "display:none;", id: "file3"%>
+        <p><%= f.check_box :remove_intro_image2 %>画像を削除する</p>
+      </div>
     </div>
-    <div class="game_edit_intro_image_area_element">
-      <div class="field image upload_game_img_area">
-        <i class="fas fa-file-upload upload_icon" onClick="$('#file3').click()" ></i>
-        <div class="img_field img_field3" onClick="$('#file3').click()" >
-          <% if @game.intro_image2.url.present? %>
-            <%= image_tag ( @game.intro_image2.url ), class: "game_edit_image" %>
-          <% else %>
-            <div class="game_img_blank"><p>ファイルを選択</p></div>
-          <% end %>
+    <div id="game_edit_intro_image_area_bottom">
+      <div class="game_edit_intro_image_area_element">
+        <div class="field image upload_game_img_area">
+          <i class="fas fa-file-upload upload_icon" onClick="$('#file4').click()" ></i>
+          <div class="img_field img_field4" onClick="$('#file4').click()" >
+            <% if @game.intro_image3.url.present? %>
+              <%= image_tag ( @game.intro_image3.url ), class: "game_edit_image" %>
+            <% else %>
+              <div class="game_img_blank"><p>ファイルを選択</p></div>
+            <% end %>
+          </div>
         </div>
+        <%= f.file_field :intro_image3, class: "image", style: "display:none;", id: "file4"%>
+        <p><%= f.check_box :remove_intro_image3 %>画像を削除する</p>
       </div>
-      <%= f.file_field :intro_image2, class: "image", style: "display:none;", id: "file3"%>
-      <p><%= f.check_box :remove_intro_image2 %>画像を削除する</p>
+      <div class="game_edit_intro_image_area_element">
+        <div class="field image upload_game_img_area">
+          <i class="fas fa-file-upload upload_icon" onClick="$('#file5').click()" ></i>
+          <div class="img_field img_field5" onClick="$('#file5').click()" >
+            <% if @game.intro_image4.url.present? %>
+              <%= image_tag ( @game.intro_image4.url ), class: "game_edit_image" %>
+            <% else %>
+              <div class="game_img_blank"><p>ファイルを選択</p></div>
+            <% end %>
+          </div>
+        </div>
+        <%= f.file_field :intro_image4, class: "image", style: "display:none;", id: "file5"%>
+        <p><%= f.check_box :remove_intro_image4 %>画像を削除する</p>
+      </div>
     </div>
   </div>
-  <div id="game_edit_intro_image_area_bottom">
-    <div class="game_edit_intro_image_area_element">
-      <div class="field image upload_game_img_area">
-        <i class="fas fa-file-upload upload_icon" onClick="$('#file4').click()" ></i>
-        <div class="img_field img_field4" onClick="$('#file4').click()" >
-          <% if @game.intro_image3.url.present? %>
-            <%= image_tag ( @game.intro_image3.url ), class: "game_edit_image" %>
-          <% else %>
-            <div class="game_img_blank"><p>ファイルを選択</p></div>
-          <% end %>
-        </div>
-      </div>
-      <%= f.file_field :intro_image3, class: "image", style: "display:none;", id: "file4"%>
-      <p><%= f.check_box :remove_intro_image3 %>画像を削除する</p>
-    </div>
-    <div class="game_edit_intro_image_area_element">
-      <div class="field image upload_game_img_area">
-        <i class="fas fa-file-upload upload_icon" onClick="$('#file5').click()" ></i>
-        <div class="img_field img_field5" onClick="$('#file5').click()" >
-          <% if @game.intro_image4.url.present? %>
-            <%= image_tag ( @game.intro_image4.url ), class: "game_edit_image" %>
-          <% else %>
-            <div class="game_img_blank"><p>ファイルを選択</p></div>
-          <% end %>
-        </div>
-      </div>
-      <%= f.file_field :intro_image4, class: "image", style: "display:none;", id: "file5"%>
-      <p><%= f.check_box :remove_intro_image4 %>画像を削除する</p>
-    </div>
-  </div>
-</div>
 
   <%= f.fields_for :updates do |u| %>
-    <%= raw sprintf(
-      u.date_select(:update_day, start_year: 2020, use_month_numbers: true, date_separator: '%s'),
-      '年 ', '月 ') + '日' %>
-    
-    <%= u.text_field :update_info %>
+    <div>
+      <%= raw sprintf(
+        u.date_select(:update_day, start_year: 2020, use_month_numbers: true, date_separator: '%s'),
+        '年 ', '月 ') + '日' %>
+      
+      <%= u.text_field :update_info %>
+    </div>
   <% end %>
 
   <div>
-    <%= f.submit ( request.path_info == '/games/new' ? '投稿する' : '更新する') %>
+    <%= f.button ( request.path_info == '/games/new' ? '投稿する' : '更新する'), type: 'button', onclick: 'submit();' %>
   </div>
 
 <% end %>

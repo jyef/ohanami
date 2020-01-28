@@ -1,42 +1,71 @@
-<div class="row"></div>
-  <%= render 'layouts/flash_messages' %>
-<div class="row"></div>
+<div class="user_edit_header">
+  <%= link_to root_path do %><%= image_tag "logo_small.png", class: "form_logo" %><% end %>
+  <div class="row"></div>
+    <%= render 'layouts/flash_messages' %>
+  <div class="row"></div>
+</div>
 
-<%= form_with(model:@user, remote: true) do |f| %>
-  <div>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  
-  <%= link_to "パスワードの変更", :edit_password %>
-  
-  <div>
-    <%= f.label :nickname %>
-    <%= f.text_field :nickname %>
-  </div>
-  
-  <div>
-    <%= f.label :introduction %>
-    <%= f.text_field :introduction %>
-  </div>
-  
-  <div>
-    <%= f.label :twitter %>
-    <i class="fas fa-at"></i><%= f.text_field :twitter %>
-  </div>
+<div class="user_edit_title">
+  <i class="fas fa-cog"></i><h2>プロフィール編集、ユーザー情報変更</h2>
+</div>
 
-    <div class="field image upload_profile_image_area">
-    <i class="fas fa-file-upload upload_icon" onClick="$('#file0').click()"></i>
-      <div class="user_img_field img_field0" onClick="$('#file0').click()" >
-        <% if @user.profile_image.url.present? %>
-          <%= image_tag ( @user.profile_image.url ), class: "user_edit_profile_image" %>
-        <% else %>
-          <div class="profile_image_blank"><p>ファイルを選択</p></div>
-        <% end %>
+<div class="user_edit_main">
+  
+  <%= form_with(model:@user, remote: true, class: 'form_general user_edit_form') do |f| %>
+  
+    <div class="user_edit_main_col1">
+      <%= f.label :profile_image %>
+      <div class="field image upload_profile_image_area">
+        <i class="fas fa-file-upload upload_icon" onClick="$('#file0').click()"></i>
+          <div class="user_img_field img_field0" onClick="$('#file0').click()" >
+            <% if @user.profile_image.url.present? %>
+              <%= image_tag ( @user.profile_image.url ), class: "user_edit_profile_image" %>
+            <% else %>
+              <div class="profile_image_blank"><p>ファイルを選択</p></div>
+            <% end %>
+          </div>
       </div>
-  </div>
-  <%= f.file_field :profile_image, class: "image", style: "display:none;", id: "file0"%>
-  <p><%= f.check_box :remove_profile_image %>画像を削除する</p>
-  
-  　　<%= f.button '更新する', type: 'button', onclick: 'submit();', class: 'btn btn-primary' %>
-<% end %>
+      <%= f.file_field :profile_image, class: "image", style: "display:none;", id: "file0"%>
+      <div class="row8"></div>
+      <p><%= f.check_box :remove_profile_image %>画像を削除する</p>
+    </div>
+    
+    <div class="user_edit_main_col2">
+      <div>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "user_edit_email" %>
+      </div>
+      
+      <div class="row"></div>
+      
+      <%= link_to "パスワードの変更", :edit_password, class: "user_edit_password" %>
+      
+      <div class="row"></div>
+    
+      <div>
+        <%= f.label :nickname %>
+        <%= f.text_field :nickname, class: "user_edit_nickname" %>
+      </div>
+      
+      <div class="row"></div>
+    
+      <div>
+        <%= f.label :introduction %>
+        <%= f.text_area :introduction %>
+      </div>
+      
+      <div class="row"></div>
+    
+      <div>
+        <%= f.label :twitter %>
+        <span class="user_edit_twitter"><i class="fas fa-at"></i><%= f.text_field :twitter %></span>
+      </div>
+      
+      <div class="row"></div>
+    　
+    　<div class="user_edit_submit">
+        <%= f.button '更新する', type: 'button', onclick: 'submit();' %>
+      </div>
+    </div>
+  <% end %>
+</div>

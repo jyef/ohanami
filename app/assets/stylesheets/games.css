@@ -1,12 +1,10 @@
+@charset "UTF-8";
 /* game/:id/show */
 /*緊急の措置*/
-#game_show_content {
-  img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-  }
-}
+#game_show_content img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover; }
 
 #game_show h2 {
   position: relative;
@@ -17,8 +15,7 @@
   font-size: 1.4rem;
   text-align: center;
   margin-bottom: 20px;
-  line-height: 1.4em;
-}
+  line-height: 1.4em; }
 
 #game_show h2:after {
   content: "";
@@ -30,14 +27,12 @@
   border-style: solid;
   border-width: 10px 10px 10px 10px;
   bottom: -20px;
-  border-top-color: #ff1493;
-}
+  border-top-color: #ff1493; }
 
 #game_show {
   display: flex;
   justify-content: space-between;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 #game_show_left {
   display: flex;
@@ -47,88 +42,65 @@
   padding: 20px 10px 10px 20px;
   border: 1px solid #ddd;
   box-sizing: inherit;
-  overflow: hidden;
-  .game_show_profile_image {
+  overflow: hidden; }
+  #game_show_left .game_show_profile_image {
     width: 180px;
     height: 180px;
-    object-fit: cover;
-  }
-  .game_show_left_nickname {
-    a {
-      font-size: 16px;
-      font-weight: bold;
-      color: #3c3c3c;
-    }
-    i {
-      font-size: 20px;
-      color: #55acee;
-    }
-  }
-  .game_show_user_games {
+    object-fit: cover; }
+  #game_show_left .game_show_left_nickname a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #3c3c3c; }
+  #game_show_left .game_show_left_nickname i {
+    font-size: 20px;
+    color: #55acee; }
+  #game_show_left .game_show_user_games {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    img {
+    align-items: center; }
+    #game_show_left .game_show_user_games img {
       width: calc(180px - .1px);
       height: calc(180px * 0.765 - .1px);
-      object-fit: cover;
-    }
-  }
-}
+      object-fit: cover; }
 
 #game_show_right {
   display: flex;
   flex-direction: column;
   align-items: center;
-  // background: #eee;
   width: 685px;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 #game_show_content {
   width: 670px;
-  // border: 1px solid #ccc;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 #game_show_stamp_area {
   width: 670px;
   box-sizing: inherit;
-  margin-bottom: 10px;
-}
-
+  margin-bottom: 10px; }
 
 #game_show_post_area {
   width: 670px;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 .game_show_reviewcount_label {
-  text-align: right;
-}
-
+  text-align: right; }
 
 #game_show_stamp_area_stamps {
   display: flex;
   width: 670px;
   justify-content: space-between;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 .game_show_area_need_login {
   display: flex;
   width: 670px;
   flex-direction: column;
-  box-sizing: inherit;
-  a {
-    &:link {
-    color: #03c;
-    }
-    &:visited {
-    color: #03c;
-    }
-  }
-}
+  box-sizing: inherit; }
+  .game_show_area_need_login a:link {
+    color: #03c; }
+  .game_show_area_need_login a:visited {
+    color: #03c; }
 
 #review_list {
   display: flex;
@@ -137,8 +109,7 @@
   -webkit-justify-content: center;
   justify-content: center;
   border-top: 1px solid #e6ecf0;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 #game_show_stamp_area_stamps .game_show_stamp_part {
   background-color: #bbb;
@@ -153,8 +124,7 @@
   border-radius: 50%;
   box-shadow: 0 0 4px black;
   box-sizing: inherit;
-  transform-origin: 50% 50%;
-}
+  transform-origin: 50% 50%; }
 
 .game_show_stamp_part p {
   position: relative;
@@ -162,209 +132,163 @@
   font-size: 20px;
   font-weight: bold;
   color: #000;
-  text-shadow:1px 1px 0 #FFF, -1px -1px 0 #FFF,
-              -1px 1px 0 #FFF, 1px -1px 0 #FFF,
-              0px 1px 0 #FFF,  0-1px 0 #FFF,
-              -1px 0 0 #FFF, 1px 0 0 #FFF;
-}
+  text-shadow: 1px 1px 0 #FFF, -1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px -1px 0 #FFF, 0px 1px 0 #FFF, -1px 0 #FFF, -1px 0 0 #FFF, 1px 0 0 #FFF; }
 
 #game_show_stamp_area_stamps #part1 {
   background-image: url("/assets/story.png");
-  background-size: contain;
-}
+  background-size: contain; }
 
 #game_show_stamp_area_stamps #part1_true {
   filter: grayscale(0);
   background-image: url("/assets/story.png");
-  background-size: contain;
-}
+  background-size: contain; }
 
 #game_show_stamp_area_stamps #part2 {
   background-image: url("/assets/story.png");
-  background-size: contain;
-}
+  background-size: contain; }
 
 #game_show_stamp_area_stamps #part2_true {
   filter: grayscale(0);
   background-image: url("/assets/story.png");
-  background-size: contain;
-}
+  background-size: contain; }
 
 #game_show_stamp_area_stamps #part3 {
   background-image: url("/assets/story.png");
-  background-size: contain;
-}
+  background-size: contain; }
 
 #game_show_stamp_area_stamps #part3_true {
   filter: grayscale(0);
   background-image: url("/assets/story.png");
-  background-size: contain;
-}
+  background-size: contain; }
 
 #game_show_stamp_area_stamps #part4 {
   background-image: url("/assets/story.png");
-  background-size: contain;
-}
+  background-size: contain; }
 
 #game_show_stamp_area_stamps #part4_true {
   filter: grayscale(0);
   background-image: url("/assets/story.png");
-  background-size: contain;
-}
+  background-size: contain; }
 
 #game_show_stamp_area_stamps #part5 {
   background-image: url("/assets/story.png");
-  background-size: contain;
-}
+  background-size: contain; }
 
 #game_show_stamp_area_stamps #part5_true {
   filter: grayscale(0);
   background-image: url("/assets/story.png");
-  background-size: contain;
-}
+  background-size: contain; }
 
 #game_show_stamp_area_stamps #part1:hover {
   filter: grayscale(0);
-  transform: scale(1.15,1.15);
-  transition-duration: 0.2s;
-}
+  transform: scale(1.15, 1.15);
+  transition-duration: 0.2s; }
 
 #game_show_stamp_area_stamps #part1_true:hover {
   filter: grayscale(0);
-  transform: scale(1.15,1.15);
-  transition-duration: 0.2s;
-}
+  transform: scale(1.15, 1.15);
+  transition-duration: 0.2s; }
 
 #game_show_stamp_area_stamps #part2:hover {
   filter: grayscale(0);
-  transform: scale(1.15,1.15);
-  transition-duration: 0.2s;
-}
+  transform: scale(1.15, 1.15);
+  transition-duration: 0.2s; }
 
 #game_show_stamp_area_stamps #part2_true:hover {
   filter: grayscale(0);
-  transform: scale(1.15,1.15);
-  transition-duration: 0.2s;
-}
+  transform: scale(1.15, 1.15);
+  transition-duration: 0.2s; }
 
 #game_show_stamp_area_stamps #part3:hover {
   filter: grayscale(0);
-  transform: scale(1.15,1.15);
-  transition-duration: 0.2s;
-}
+  transform: scale(1.15, 1.15);
+  transition-duration: 0.2s; }
 
 #game_show_stamp_area_stamps #part3_true:hover {
   filter: grayscale(0);
-  transform: scale(1.15,1.15);
-  transition-duration: 0.2s;
-}
+  transform: scale(1.15, 1.15);
+  transition-duration: 0.2s; }
 
 #game_show_stamp_area_stamps #part4:hover {
   filter: grayscale(0);
-  transform: scale(1.15,1.15);
-  transition-duration: 0.2s;
-}
+  transform: scale(1.15, 1.15);
+  transition-duration: 0.2s; }
 
 #game_show_stamp_area_stamps #part4_true:hover {
   filter: grayscale(0);
-  transform: scale(1.15,1.15);
-  transition-duration: 0.2s;
-}
+  transform: scale(1.15, 1.15);
+  transition-duration: 0.2s; }
 
 #game_show_stamp_area_stamps #part5:hover {
   filter: grayscale(0);
-  transform: scale(1.15,1.15);
-  transition-duration: 0.2s;
-}
+  transform: scale(1.15, 1.15);
+  transition-duration: 0.2s; }
 
 #game_show_stamp_area_stamps #part5_true:hover {
   filter: grayscale(0);
-  transform: scale(1.15,1.15);
-  transition-duration: 0.2s;
-}
+  transform: scale(1.15, 1.15);
+  transition-duration: 0.2s; }
 
 /*コメント投稿エリア*/
 #game_show_post_area_post {
-  padding-left: 10px;
-  .game_show_post_area_left {
+  padding-left: 10px; }
+  #game_show_post_area_post .game_show_post_area_left {
     float: left;
-    margin-right: 10px;
-  }
-  .game_show_post_area_right {
+    margin-right: 10px; }
+  #game_show_post_area_post .game_show_post_area_right {
     float: right;
-    width: 590px;
-  }
-}
+    width: 590px; }
 
-.game_show_post_area_left {
-  img {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-}
+.game_show_post_area_left img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover; }
 
-.game_show_post_area_right {
-  .row-1 {
-    font-weight: bold;
-    margin-bottom: 4px;
-  }
-  .row-2 {
-    textarea {
-      width: 100%;
-      height: calc( 1.3em * 10 + 1em);
-      line-height: 1.3;
-      box-sizing: border-box;
-    }
-  }
-  .row-3 {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 16px;
-    input {
-      margin-right: 2px;
-    }
-    p {
-      margin-right: 8px;
-    }
-  }
-}
+.game_show_post_area_right .row-1 {
+  font-weight: bold;
+  margin-bottom: 4px; }
+.game_show_post_area_right .row-2 textarea {
+  width: 100%;
+  height: calc( 1.3em * 10 + 1em);
+  line-height: 1.3;
+  box-sizing: border-box; }
+.game_show_post_area_right .row-3 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 16px; }
+  .game_show_post_area_right .row-3 input {
+    margin-right: 2px; }
+  .game_show_post_area_right .row-3 p {
+    margin-right: 8px; }
 
 /*感想表示エリア*/
-
 .review_list_left {
-  margin-right: 10px;
-}
+  margin-right: 10px; }
 
 .review_list_left img {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  object-fit: cover;
-}
+  object-fit: cover; }
 
 .review_list_right {
   display: flex;
   flex-direction: column;
   width: 590px;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 .review_list_right_top {
   display: flex;
-  justify-content: space-between;
-}
+  justify-content: space-between; }
 
 .review_list_right_top_nickname {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 .review_list_right_middle .spoiler {
   font-size: 15px;
-  color: #d94c4c;
-}
+  color: #d94c4c; }
 
 .review_list_right_middle button {
   background-color: transparent;
@@ -378,20 +302,18 @@
   cursor: pointer;
   outline: none;
   padding: 0;
-  appearance: none;
-}
+  appearance: none; }
 
 .review_list_right_bottom {
   display: flex;
   justify-content: flex-end;
   text-align: center;
   height: 40px;
-  line-height: 40px;
-}
+  line-height: 40px; }
 
 .review_list_right_bottom i {
   display: inline-block;
-  vertical-align:middle;
+  vertical-align: middle;
   width: 30px;
   height: 30px;
   line-height: 30px;
@@ -399,50 +321,40 @@
   cursor: pointer;
   font-size: 20px;
   color: #8e8e8e;
-  // background-color: #f5f5f5;
-  // box-shadow: 0 0 2px gray;
   border-radius: 4px;
-  transform-origin: 50% 50%;
-}
+  transform-origin: 50% 50%; }
 
 .review_list_right_bottom i:hover {
   color: #fff;
   background: #14171a;
-  transform: scale(1.4,1.4);
-  transition-duration: 0.3s;
-}
+  transform: scale(1.4, 1.4);
+  transition-duration: 0.3s; }
 
 .review_list_right_bottom p {
   verical-align: middle;
-  margin-right: 1px;
-}
+  margin-right: 1px; }
 
 .review_list_right_bottom button {
-	background: none;
-	border: none;
-	outline: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-}
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
 
 .review_list_right_bottom .fa-heart {
-  margin-right: 0px;
-}
+  margin-right: 0px; }
 
 .review_list_right_bottom .fa-heart-on {
-  color: #f92711;
-}
+  color: #f92711; }
 
 .review_list_right_bottom .fa-heart-off {
-  color: #8e8e8e;
-}
+  color: #8e8e8e; }
 
 .edited::after {
   color: #999;
   margin-left: 1em;
-  content: '(編集済み)';
-}
+  content: '(編集済み)'; }
 
 /* game/:id/edit */
 .upload_game_img_area {
@@ -450,8 +362,7 @@
   width: 160px;
   height: 160px;
   text-align: center;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 .upload_game_img_area .upload_icon {
   position: absolute;
@@ -468,8 +379,7 @@
   border-radius: 50%;
   opacity: 0.9;
   z-index: 2;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .img_field {
   position: absolute;
@@ -481,8 +391,7 @@
   background-size: contain;
   overflow: hidden;
   box-sizing: inherit;
-  z-index: 1;
-}
+  z-index: 1; }
 
 .img_field .game_img_blank {
   position: absolute;
@@ -496,33 +405,28 @@
   background: #f8f8f8;
   border: 2px dashed #c8c8c0;
   border-radius: 5px;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 .img_field .game_img_blank p {
-  font-size: 18px;
-}
+  font-size: 18px; }
 
 .game_edit_image {
   width: 160px;
   height: 160px;
-  object-fit: cover;
-}
+  object-fit: cover; }
 
 #game_edit_intro_image_area {
   display: flex;
-  flex-direction: column;
-}
+  flex-direction: column; }
 
 #game_edit_intro_image_area_top {
-  display: flex;
-}
+  display: flex; }
 
 #game_edit_intro_image_area_bottom {
-  display: flex;
-}
+  display: flex; }
 
 .game_edit_intro_image_area_element {
   display: flex;
-  flex-direction: column;
-}
+  flex-direction: column; }
+
+/*# sourceMappingURL=games.css.map */

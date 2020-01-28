@@ -13,7 +13,25 @@
 <div id="game_show">
 <%#------------------------------ここから左枠------------------------------%>
   <div id="game_show_left">
-    <p><%= @game.user.nickname %></p>
+    <%= image_tag( @game.user.profile_image.url.blank? ? "/assets/default.png" : @game.user.profile_image.url , class: "game_show_profile_image" ) %>
+    <div class="game_show_left_nickname">
+      <%= link_to @game.user.nickname, user_path(@game.user) %>
+      <% unless @game.user.twitter.blank? %>
+        <%= link_to "https://twitter.com/#{@game.user.twitter}" do %>
+          <i class="fab fa-twitter-square twitter_icon"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div><pre><%= @game.user.introduction %></pre></div>
+    <h3>作品一覧</h3>
+    <% @game.user.games.each do |x| %>
+      <%= link_to game_path(x) do %>
+        <div class="game_show_user_games">
+          <%= image_tag( x.icon.url.blank? ? "/assets/default.png" : x.icon.url ) %>
+          <p><%= x.title %></p>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 <%#------------------------------左枠ここまで------------------------------%>
 <%#------------------------------ここから右枠------------------------------%>
@@ -40,106 +58,149 @@
       <p><% unless @game.icon.url.blank? %><%= image_tag (@game.intro_image2.url) %><% end %></p>
       <p><% unless @game.icon.url.blank? %><%= image_tag (@game.intro_image3.url) %><% end %></p>
       <p><% unless @game.icon.url.blank? %><%= image_tag (@game.intro_image4.url) %><% end %></p>
-      
     </div>
     
-    <div id="game_show_stamp">
-
-      <% column.each_with_index do |x, i| %>
-        <%= form_with(model: current_user.stamps.build, local: true) do |f| %>
-          <% if current_user.have_stamp?(@game) && current_user.stamps.find_by(game_id: @game.id).send("#{x[0]}") == true %>
-            <%= hidden_field_tag :"#{x[0]}", false %>
-            <% col_boolean = '_true' %>
-          <% else %>
-            <%= hidden_field_tag :"#{x[0]}", true %>
-          <% end %>
-          <%= hidden_field_tag :game_id, @game.id %>
-          <button class="game_show_stamp_part" id="part<%= i + 1 %><%= col_boolean %>" type="submit"><p><%= x[1] %></p></button>
-        <% end %>
-      <% end %>
-    </div>
-    
-    <div id="game_show_post">
+    <div id="game_show_stamp_area">
+      <div class="textCenter">
+        <h2>バッジを送る</h2>
+        <p>特に良かったと思うものを選ぼう！(複数選択可)</p>
+      </div>
+      <div class="row"></div>
       <% if logged_in? %>
-        <%= form_with(model: current_user.reviews.build, local: true) do |f| %>
-          <%= hidden_field_tag :game_id, @game.id %>
-          
-          <div>
-            <%= f.label :content %>
-            <%= f.text_area :content %>
-          </div>
-          
-          <div>
-            <%= f.label :spoiler %>
-            <%= f.check_box :spoiler %>
-          </div>
-          <%= f.submit '投稿する' %>
-        <% end %>
+        <div id="game_show_stamp_area_stamps">
+          <% column.each_with_index do |x, i| %>
+            <%= form_with(model: current_user.stamps.build, local: true) do |f| %>
+              <% if current_user.have_stamp?(@game) && current_user.stamps.find_by(game_id: @game.id).send("#{x[0]}") == true %>
+                <%= hidden_field_tag :"#{x[0]}", false %>
+                <% col_boolean = '_true' %>
+              <% else %>
+                <%= hidden_field_tag :"#{x[0]}", true %>
+              <% end %>
+              <%#= hidden_field_tag :game_id, @game.id %>
+              <input type="hidden" name="game_id" value=<%= @game.id %>>
+              <button class="game_show_stamp_part" id="part<%= i + 1 %><%= col_boolean %>" type="submit"><p><%= x[1] %></p></button>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="game_show_area_need_login">
+          <p>バッジを送るには、ログインが必要です。</p>
+          <p><%= link_to "ログインする", login_path %></p>
+        </div>
       <% end %>
+    </div>
+    
+    <div class="row32"></div>
+    
+    <div id="game_show_post_area">
+      <div class="textCenter">
+        <h2>コメント</h2>
+        <p>作品の感想を気軽に投稿しよう！</p>
+      </div>
+        
+      <div class="row"></div>
+        
+      <div id="game_show_post_area_post">
+        <% if logged_in? %>
+          <%= form_with(model: current_user.reviews.build, local: true, class: "form_general") do |f| %>
+            <input type="hidden" name="game_id" value=<%= @game.id %>>
+              
+            <div class="game_show_post_area_left">
+              <%= image_tag( current_user.profile_image.url.blank? ? "/assets/default.png" : current_user.profile_image.url ) %>
+            </div>
+              
+            <div class="game_show_post_area_right">
+              <div class="row-1">
+                <p><%= current_user.nickname.present? ? current_user.nickname.truncate(18) + " さん" : "ナナシ さん" %></p>
+              </div>
+              <div class="row-2">
+                <%= f.text_area :content %>
+              </div>
+              <div class="row-3">
+                <%= f.check_box :spoiler %>
+                <p>ネタバレを含む</p>
+                <%= f.button '投稿する', type: 'button', onclick: 'submit();' %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="game_show_area_need_login">
+            <p>コメントを投稿するには、ログインが必要です。</p>
+            <p><%= link_to "ログインする", login_path %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
     
     <% @game.reviews.each do |review| %>
-    <div id="review_list">
-      <div class="review_list_left">
-        <%= image_tag( review.user.profile_image.url ) %>
-      </div>
-      <div class="review_list_right">
-        <div class="review_list_right_top">
-          <%= link_to user_path(review.user_id), class: 'review_list_right_top_nickname' do %><p><%= review.user.nickname.truncate(18) + " さん" %></p><% end %>
-          <p><%= review.created_at.strftime('%Y年%m月%d日') %></p>
+      <div id="anchor<%= review.id %>"></div>
+      <div id="review_list">
+        
+        <div class="review_list_left">
+          <%= image_tag( review.user.profile_image.url ) %>
         </div>
-        <div class="review_list_right_middle">
-          <% if review.spoiler? %>
-            <div id="caution<%= review.id %>">
-              <p class="spoiler">※ネタバレ※</p>
-              <p>この感想には、作品のネタバレに関する記述が含まれています。</p>
-              <p class="disp_review">
-                <button id="btn_click<%= review.id %>" class="btn_click"><i class="fas fa-caret-down"></i></button>
-                <a href="#" id="btn_click<%= review.id %>" class="btn_click" onclick="return false;">感想を表示する</a>
-              </p>
-            </div>
-            <div id="tab<%= review.id %>" style="display: none">
-              <%# review.content += "　(編集済み)" if review.edited? %><%#= simple_format(review.content, {}, sanitize: false) %>
-              <pre class="<%= 'edited' if review.edited? %>"><%= review.content %></pre>
-            </div>
-          <% else %>
-            <pre class="<%= 'edited' if review.edited? %>"><%= review.content %></pre>
-          <% end %>
-        </div>
-        <div class="review_list_right_bottom">
-          <% if logged_in? && review.user_id == current_user.id %>
-            <%= link_to edit_review_path(id: review.id) do %><i class="fas fa-edit"></i><% end %>
-            <%= form_with(model: current_user.reviews.find_by(id: review.id), local: true, method: :delete) do |f| %>
-              <%= button_tag type: 'submit', data: {confirm: "削除しますか？"} do %><i class="fas fa-trash-alt"></i><% end %>
-            <% end %>
-          <% end %>
-          <% if logged_in? %>
-            <% if current_user.likeit?(review) %>
-              <%= form_with(model: review.likes.find_by(review_id: review.id), local: true, method: :delete) do |f| %>
-                <%= hidden_field_tag :review_id, review.id %>
-                <%= button_tag type: 'submit' do %>
-                  <i class="fas fa-heart fa-heart-on"></i>
-                <% end %>
-              <% end %>
+        
+        <div class="review_list_right">
+          
+          <div class="review_list_right_top">
+            <%= link_to user_path(review.user_id), class: 'review_list_right_top_nickname' do %><p><%= review.user.nickname.truncate(18) + " さん" %></p><% end %>
+            <p><%= review.created_at.strftime('%Y年%m月%d日') %></p>
+          </div>
+          
+          <div class="review_list_right_middle">
+            <% if review.spoiler? %>
+              <div id="caution<%= review.id %>">
+                <p class="spoiler">※ネタバレ※</p>
+                <p>この感想には、作品のネタバレに関する記述が含まれています。</p>
+                <p class="disp_review">
+                  <button id="btn_click<%= review.id %>" class="btn_click"><i class="fas fa-caret-down"></i></button>
+                  <a href="#" id="btn_click<%= review.id %>" class="btn_click" onclick="return false;">感想を表示する</a>
+                </p>
+              </div>
+              <div id="tab<%= review.id %>" style="display: none">
+                <pre class="<%= 'edited' if review.edited? %>"><%= review.content %></pre>
+              </div>
             <% else %>
-              <%= form_with(model: review.likes.build, local: true) do |f| %>
-                <%= hidden_field_tag :review_id, review.id %>
-                <%= button_tag type: 'submit' do %>
-                  <i class="fas fa-heart fa-heart-off"></i>
+              <pre class="<%= 'edited' if review.edited? %>"><%= review.content %></pre>
+            <% end %>
+          </div>
+          
+          <div class="review_list_right_bottom">
+            <% if logged_in? && review.user_id == current_user.id %>
+              <%= link_to edit_review_path(id: review.id) do %><i class="fas fa-edit"></i><% end %>
+                <%= form_with(model: current_user.reviews.find_by(id: review.id), local: true, method: :delete) do |f| %>
+                  <button type="submit" onclick="return confirm('削除しますか？')"><i class="fas fa-trash-alt"></i></button>
                 <% end %>
               <% end %>
-            <% end %>
-          <% else %>
-            <button onClick="disp()"><i class="fas fa-heart"></i></button>
-          <% end %>
-          <p><%= "#{review.likes.count}" %></p><p>いいね</p>
+              <% if logged_in? %>
+                <% if current_user.likeit?(review) %>
+                  <%= form_with(model: review.likes.find_by(review_id: review.id), local: true, method: :delete) do |f| %>
+                    <input type="hidden" name="review_id" value=<%= review.id %>>
+                    <%= button_tag type: 'submit' do %>
+                      <i class="fas fa-heart fa-heart-on"></i>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <%= form_with(model: review.likes.build, local: true) do |f| %>
+                    <input type="hidden" name="review_id" value=<%= review.id %>>
+                    <%= button_tag type: 'submit' do %>
+                      <i class="fas fa-heart fa-heart-off"></i>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <button onClick="disp()"><i class="fas fa-heart"></i></button>
+              <% end %>
+              <p><%= "#{review.likes.count}" %></p><p>いいね</p>
+          </div>
+          
         </div>
       </div>
-    </div>
     <% end %>
   </div>
 <%#------------------------------右枠ここまで------------------------------%>
 </div>
+<div class="row32"></div>
 
 <script>
 $('.btn_click').click(function(){

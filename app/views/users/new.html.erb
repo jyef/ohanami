@@ -12,9 +12,8 @@
   
   
   <%= form_with(model: @user, local: true) do |f| %>
-  <div class="signup-error">
     <%= render 'layouts/error_messages', model: f.object %>
-  </div>
+    
     <table width="720px" class="signup-form-table row">
       <tbody>
         <tr>

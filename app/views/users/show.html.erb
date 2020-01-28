@@ -1,3 +1,4 @@
+<% @thisPage = 'user_show' %>
 <%#----------ユーザー登録後モーダル表示ここから----------%>
 <% if flash[:modal_open] %>
   <div id="con" class="modal-content">
@@ -25,19 +26,19 @@
   <%= render 'layouts/flash_messages' %>
 <div class="row"></div>
 
-<%= render 'users/card', user: @user %>
+<%= render 'users/card', user: @user, thisPage: @thisPage %>
 
-<% @user.games.each do |game| %>
-  <div id="user_show_games_area">
-    <div id="user_show_games_tab_area">
-      <div class="tab" id="tab_active">
-        <p>登録ゲーム</p>
-      </div>
-      <a href=<%= myreviews_user_path(@user) %> id="tab_link">
-        <div class="tab" id="tab_inactive">
-          <p>投稿した感想</p>
-        </div>
-      </a>
+<div id="user_show_games_area">
+  <div id="user_show_games_tab_area">
+    <div class="tab" id="tab_active">
+      <p>登録ゲーム</p>
     </div>
+    <a href=<%= myreviews_user_path(@user) %> id="tab_link">
+      <div class="tab" id="tab_inactive">
+        <p>投稿した感想</p>
+      </div>
+    </a>
   </div>
-<% end %>
+  <div class="row32"></div>
+  <%= render 'toppages/gamecard', games: @user.games, thisPage: @thisPage %>
+</div>
