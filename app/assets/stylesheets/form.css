@@ -33,6 +33,7 @@
     color: #cccccc; }
 .form_general button {
   display: inline-block;
+  position: absolute;
   max-width: 180px;
   text-align: left;
   background-color: #39e;

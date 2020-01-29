@@ -2,7 +2,7 @@
   <ul>
     <% games.each do |game| %>
       <li>
-          <% if thisPage == "user_show" && game.user_id == current_user.id %>
+          <% if logged_in? && thisPage == "user_show" && game.user_id == current_user.id %>
             <%= link_to edit_game_path(game) do %>
               <div class="gameEdit_button">
                 <span><i class="fas fa-cog user_show_gameEdit_i"></i><p class="user_show_gameEdit_p">このゲームを編集する</p></span>

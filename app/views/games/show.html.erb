@@ -15,7 +15,7 @@
   <div id="game_show_left">
     <%= image_tag( @game.user.profile_image.url.blank? ? "/assets/default.png" : @game.user.profile_image.url , class: "game_show_profile_image" ) %>
     <div class="game_show_left_nickname">
-      <%= link_to @game.user.nickname, user_path(@game.user) %>
+      <%= link_to (@game.user.nickname.present? ? "#{@game.user.nickname} さん" : "ナナシ さん"), user_path(@game.user) %>
       <% unless @game.user.twitter.blank? %>
         <%= link_to "https://twitter.com/#{@game.user.twitter}" do %>
           <i class="fab fa-twitter-square twitter_icon"></i>
@@ -119,7 +119,9 @@
               <div class="row-3">
                 <%= f.check_box :spoiler %>
                 <p>ネタバレを含む</p>
-                <%= f.button '投稿する', type: 'button', onclick: 'submit();' %>
+                <div style="width: 109px; height: 47px;">
+                  <%= f.button '投稿する', type: 'button', onclick: 'submit();' %>
+                </div>
               </div>
             </div>
           <% end %>
@@ -143,7 +145,9 @@
         <div class="review_list_right">
           
           <div class="review_list_right_top">
-            <%= link_to user_path(review.user_id), class: 'review_list_right_top_nickname' do %><p><%= review.user.nickname.truncate(18) + " さん" %></p><% end %>
+            <%= link_to user_path(review.user_id), class: 'review_list_right_top_nickname' do %>
+              <p><%= review.user.nickname.present? ? "#{review.user.nickname.truncate(18)} さん" : "ナナシ さん" %></p>
+            <% end %>
             <p><%= review.created_at.strftime('%Y年%m月%d日') %></p>
           </div>
           

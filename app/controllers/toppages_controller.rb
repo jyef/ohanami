@@ -5,8 +5,8 @@ class ToppagesController < ApplicationController
     if params[:title].present?
       @games = Game.where('title LIKE ?', "%#{params[:title]}%")
     else
-      # @games = Game.order("rand()").all
-      @games = Game.all
+      rand = Rails.env.production? ? "RANDOM()" : "rand()"
+      @games = Game.all.order(rand)
     end
   end
 end

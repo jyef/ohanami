@@ -8,7 +8,7 @@ class Game < ApplicationRecord
   mount_uploader :intro_image3, Intro3Uploader
   mount_uploader :intro_image4, Intro4Uploader
   
-  has_many :updates
+  has_many :updates, dependent: :destroy
   accepts_nested_attributes_for :updates, reject_if: :reject_blank, allow_destroy: true
   
   def reject_blank(attributes)
@@ -18,7 +18,7 @@ class Game < ApplicationRecord
     !exists && empty
   end
   
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :reviewers, through: :reviews, source: :user 
-  has_many :stamps
+  has_many :stamps, dependent: :destroy
 end

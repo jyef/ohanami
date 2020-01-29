@@ -27,7 +27,9 @@
         </div>
         <div class="review_list_right">
           <div class="review_list_right_top">
-            <%= link_to user_path(review.user_id), class: 'review_list_right_top_nickname' do %><p><%= review.user.nickname.truncate(18) + " さん" %></p><% end %>
+            <%= link_to user_path(review.user_id), class: 'review_list_right_top_nickname' do %>
+              <p><%= review.user.nickname.present? ? "#{review.user.nickname.truncate(18)} さん" : "ナナシ さん" %></p>
+            <% end %>
             <p><%= review.created_at.strftime('%Y年%m月%d日') %></p>
           </div>
           <div class="review_list_right_middle">
@@ -82,6 +84,7 @@
     
     </div>
   </div>
+  <div class="row32"></div>
 
 <script>
   $('.btn_click').click(function(){
