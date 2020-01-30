@@ -112,10 +112,12 @@
   width: 100%; }
 
 .order_wrap {
-  width: 134px; }
+  width: 142px; }
   .order_wrap .order_dsc {
-    right: calc(0% + 133px);
-    width: 133px;
+    white-space: nowrap;
+    text-align: center;
+    right: calc(0% + 142px);
+    width: 142px;
     font-size: 14px;
     padding: 7px 20px;
     filter: grayscale(100%);
@@ -124,9 +126,10 @@
       filter: grayscale(0);
       opacity: 1; }
   .order_wrap .order_asc {
-    right: 0%;
+    white-space: nowrap;
     text-align: center;
-    width: 133px;
+    right: 0%;
+    width: 142px;
     font-size: 14px;
     padding: 7px 20px;
     filter: grayscale(100%);
