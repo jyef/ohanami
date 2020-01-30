@@ -60,6 +60,10 @@
    display: block;
   }
   
+  .row4 {
+    margin-bottom: 4px;
+  }
+  
   .row8 {
     display: flex;
     margin-bottom: 8px;

@@ -32,7 +32,7 @@ $(document).on('turbolinks:load', function(){
         $preview.append($('<img>').attr({
           src: e.target.result,
           width: "100%",
-          class: "preview game_edit_image",
+          class: "preview game_edit_image game_edit_image_icon",
           title: file.name
         }));
       };
@@ -52,7 +52,7 @@ $(document).on('turbolinks:load', function(){
         $preview.append($('<img>').attr({
           src: e.target.result,
           width: "100%",
-          class: "preview game_edit_image",
+          class: "preview game_edit_image game_edit_image_intro",
           title: file.name
         }));
       };
@@ -72,7 +72,7 @@ $(document).on('turbolinks:load', function(){
         $preview.append($('<img>').attr({
           src: e.target.result,
           width: "100%",
-          class: "preview game_edit_image",
+          class: "preview game_edit_image game_edit_image_intro",
           title: file.name
         }));
       };
@@ -92,7 +92,7 @@ $(document).on('turbolinks:load', function(){
         $preview.append($('<img>').attr({
           src: e.target.result,
           width: "100%",
-          class: "preview game_edit_image",
+          class: "preview game_edit_image game_edit_image_intro",
           title: file.name
         }));
       };
@@ -112,7 +112,7 @@ $(document).on('turbolinks:load', function(){
         $preview.append($('<img>').attr({
           src: e.target.result,
           width: "100%",
-          class: "preview game_edit_image",
+          class: "preview game_edit_image game_edit_image_intro",
           title: file.name
         }));
       };

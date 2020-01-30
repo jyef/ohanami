@@ -1,5 +1,14 @@
-<div class="row"></div>
-  <%= render 'layouts/flash_messages' %>
-<div class="row"></div>
+<div class="game_edit_header">
+  <%= link_to root_path do %><%= image_tag "logo_small.png", class: "form_logo" %><% end %>
+  <div class="row"></div>
+    <%= render 'layouts/flash_messages' %>
+  <div class="row"></div>
+</div>
 
-<%= render 'new_edit' %>
+<div class="game_edit_title">
+  <i class="fas fa-cog"></i><h2>ゲーム情報を登録、編集する</h2>
+</div>
+
+<div class="game_edit_main">
+  <%= render 'new_edit' %>
+</div>

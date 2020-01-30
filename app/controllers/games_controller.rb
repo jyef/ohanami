@@ -3,6 +3,7 @@ class GamesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   
   def index
+    redirect_to root_url
   end
   
   def show
@@ -15,10 +16,11 @@ class GamesController < ApplicationController
   end
   
   def create
+    
     @game = current_user.games.build(game_params)
     if @game.save
       flash[:success] = 'ゲーム情報を投稿ました。'
-      redirect_to root_url
+      redirect_to @game
     else
       flash.now[:danger] = 'ゲームの投稿に失敗しました。'
       render 'games/new'
@@ -31,13 +33,14 @@ class GamesController < ApplicationController
   end
   
   def update
+    slice_url
     @game = Game.find(params[:id])
     if @game.update(update_game_params)
       flash[:success] = "#{@game.title}を更新しました。"
       redirect_to @game
     else
       flash.now[:danger] = "#{@game.title}は更新されませんでした。"
-      render :edit
+      render :edit, collection: @game.updates.build
     end
   end
   
@@ -58,6 +61,16 @@ private
     game_user = Game.find(params[:id])
     unless game_user.user.id == session[:user_id]
       redirect_to root_url
+    end
+  end
+  
+  def slice_url
+    if params[:game][:url].present? && params[:game][:url].include?("gm")
+      i = params[:game][:url].index("gm")
+      str = params[:game][:url][i, 100]
+      params[:game][:url] = "https://game.nicovideo.jp/atsumaru/games/" + str
+    else
+      params[:game][:url] = nil
     end
   end
 end

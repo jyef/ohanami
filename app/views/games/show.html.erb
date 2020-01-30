@@ -13,25 +13,7 @@
 <div id="game_show">
 <%#------------------------------ここから左枠------------------------------%>
   <div id="game_show_left">
-    <%= image_tag( @game.user.profile_image.url.blank? ? "/assets/default.png" : @game.user.profile_image.url , class: "game_show_profile_image" ) %>
-    <div class="game_show_left_nickname">
-      <%= link_to (@game.user.nickname.present? ? "#{@game.user.nickname} さん" : "ナナシ さん"), user_path(@game.user) %>
-      <% unless @game.user.twitter.blank? %>
-        <%= link_to "https://twitter.com/#{@game.user.twitter}" do %>
-          <i class="fab fa-twitter-square twitter_icon"></i>
-        <% end %>
-      <% end %>
-    </div>
-    <div><pre><%= @game.user.introduction %></pre></div>
-    <h3>作品一覧</h3>
-    <% @game.user.games.each do |x| %>
-      <%= link_to game_path(x) do %>
-        <div class="game_show_user_games">
-          <%= image_tag( x.icon.url.blank? ? "/assets/default.png" : x.icon.url ) %>
-          <p><%= x.title %></p>
-        </div>
-      <% end %>
-    <% end %>
+    <%= render 'games/creator', game: @game %>
   </div>
 <%#------------------------------左枠ここまで------------------------------%>
 <%#------------------------------ここから右枠------------------------------%>
@@ -129,6 +111,7 @@
           <div class="game_show_area_need_login">
             <p>コメントを投稿するには、ログインが必要です。</p>
             <p><%= link_to "ログインする", login_path %></p>
+            <div class="row32"></div>
           </div>
         <% end %>
       </div>

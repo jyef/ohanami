@@ -155,10 +155,49 @@ $icon-height: calc(207px * 0.765 - .1px);
   }
 }
 
+.toppage_search_area {
+  display: flex;
+  width: 100%;
+}
+
+.order_wrap {
+  width: 133px;
+  
+  .order_dsc {
+    right: calc(0% + 133px);
+    width: 133px;
+    font-size: 14px;
+    padding: 7px 20px;
+    filter: grayscale(100%);
+    opacity: 0.4;
+    &:hover {
+    filter: grayscale(0);
+    opacity: 1;
+    }
+  }
+  .order_asc {
+    right: 0%;
+    text-align: center;
+    width: 133px;
+    font-size: 14px;
+    padding: 7px 20px;
+    filter: grayscale(100%);
+    opacity: 0.4;
+    &:hover {
+    filter: grayscale(0);
+    opacity: 1;
+    }
+  }
+  .active {
+    filter: grayscale(0);
+    opacity: 1;
+  }
+}
+
 .searchForm {
   display: flex;
   input#title {
-    width: 40%;
+    width: 17em;
     padding: .5em;
     font-size: 16px;
     border: 2px solid #c8c8c8;

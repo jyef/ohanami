@@ -35,33 +35,8 @@
   box-sizing: border-box; }
 
 #game_show_left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 240px;
-  padding: 20px 10px 10px 20px;
-  border: 1px solid #ddd;
-  box-sizing: inherit;
-  overflow: hidden; }
-  #game_show_left .game_show_profile_image {
-    width: 180px;
-    height: 180px;
-    object-fit: cover; }
-  #game_show_left .game_show_left_nickname a {
-    font-size: 16px;
-    font-weight: bold;
-    color: #3c3c3c; }
-  #game_show_left .game_show_left_nickname i {
-    font-size: 20px;
-    color: #55acee; }
-  #game_show_left .game_show_user_games {
-    display: flex;
-    flex-direction: column;
-    align-items: center; }
-    #game_show_left .game_show_user_games img {
-      width: calc(180px - .1px);
-      height: calc(180px * 0.765 - .1px);
-      object-fit: cover; }
+  box-sizing: border-box; }
 
 #game_show_right {
   display: flex;
@@ -69,6 +44,75 @@
   align-items: center;
   width: 685px;
   box-sizing: inherit; }
+
+.game_show_creator {
+  width: 240px;
+  padding: 20px 20px 0 20px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  box-sizing: border-box; }
+  .game_show_creator .game_show_creator_inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .game_show_creator .game_show_creator_inner .game_show_profile_image {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 6px;
+      object-fit: cover; }
+    .game_show_creator .game_show_creator_inner .creator_introduction {
+      width: 200px;
+      border: 1px solid #e6e6e6;
+      margin-bottom: 32px;
+      border-radius: 2px; }
+      .game_show_creator .game_show_creator_inner .creator_introduction pre {
+        font-size: 12px;
+        color: #737373;
+        padding: 5px; }
+    .game_show_creator .game_show_creator_inner .creator_nickname {
+      margin-bottom: 8px; }
+      .game_show_creator .game_show_creator_inner .creator_nickname a {
+        font-size: 16px;
+        font-weight: bold;
+        color: #3c3c3c; }
+      .game_show_creator .game_show_creator_inner .creator_nickname i {
+        font-size: 20px;
+        color: #55acee; }
+    .game_show_creator .game_show_creator_inner .heading {
+      width: 100%;
+      border-left: 10px solid #ff1493;
+      padding: 5px 0 8px 14px;
+      border-bottom: 1px solid #e6e6e6;
+      margin-bottom: 32px;
+      box-sizing: border-box; }
+    .game_show_creator .game_show_creator_inner .creator_games {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #e6e6e6;
+      margin-bottom: 32px; }
+      .game_show_creator .game_show_creator_inner .creator_games img {
+        background: #fff;
+        width: 196px;
+        height: calc(196px * 0.765);
+        object-fit: cover; }
+      .game_show_creator .game_show_creator_inner .creator_games .creator_games_inner {
+        display: inline-block;
+        background: #fff;
+        border-left: 6px solid #ff1493;
+        padding: 5px 0px 5px 10px; }
+        .game_show_creator .game_show_creator_inner .creator_games .creator_games_inner p {
+          font-weight: bold;
+          background: #fff; }
+  .game_show_creator .heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; }
+    .game_show_creator .heading i {
+      margin-right: 4px;
+      font-size: 28px; }
+  .game_show_creator h3 {
+    color: #3c3c3c;
+    font-size: 24px; }
 
 #game_show_content {
   width: 670px;
@@ -357,10 +401,48 @@
   content: '(編集済み)'; }
 
 /* game/:id/edit */
+.game_edit_title {
+  display: flex;
+  align-items: center;
+  width: 960px;
+  box-sizing: border-box; }
+  .game_edit_title .fa-cog {
+    margin-right: 6px;
+    font-size: 2rem;
+    color: #046eb8; }
+  .game_edit_title h2 {
+    color: #3c3c3c; }
+
+.game_edit_main {
+  padding-top: 24px;
+  width: 50%; }
+  .game_edit_main label {
+    color: #3c3c3c; }
+  .game_edit_main h4 {
+    color: #3c3c3c; }
+  .game_edit_main p {
+    color: #555; }
+  .game_edit_main .game_edit_url {
+    font-size: 11px; }
+
+.game_edit_input_title {
+  width: 100%; }
+.game_edit_input_url {
+  width: 100%; }
+.game_edit_input_genre {
+  width: 50%; }
+.game_edit_input_information {
+  width: 100%;
+  height: 11.5em; }
+.game_edit_input_play_time {
+  width: 50%; }
+.game_edit_input_update {
+  width: 100%; }
+
 .upload_game_img_area {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: calc(200px * 0.765);
   text-align: center;
   box-sizing: border-box; }
 
@@ -383,8 +465,8 @@
 
 .img_field {
   position: absolute;
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: calc(200px * 0.765);
   cursor: pointer;
   background-position: center;
   background-repeat: no-repeat;
@@ -399,34 +481,47 @@
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: calc(200px * 0.765);
+  font-size: 16px;
   color: #c8c8c0;
   background: #f8f8f8;
   border: 2px dashed #c8c8c0;
   border-radius: 5px;
-  box-sizing: inherit; }
+  box-sizing: border-box; }
 
 .img_field .game_img_blank p {
   font-size: 18px; }
 
 .game_edit_image {
-  width: 160px;
-  height: 160px;
-  object-fit: cover; }
+  width: 200px;
+  height: calc(200px * 0.765);
+  background: #f8f8f8;
+  border: 2px dashed #c8c8c0;
+  border-radius: 5px;
+  box-sizing: border-box; }
+  .game_edit_image_icon {
+    object-fit: cover; }
+  .game_edit_image_intro {
+    object-fit: contain; }
 
 #game_edit_intro_image_area {
   display: flex;
-  flex-direction: column; }
+  flex-wrap: wrap;
+  width: 432px;
+  box-sizing: border-box; }
+  #game_edit_intro_image_area .game_edit_intro_image_area_element:not(:nth-child(2n)) {
+    margin-right: 32px; }
+  #game_edit_intro_image_area .game_edit_intro_image_area_element:not(:nth-last-child(-n+2)) {
+    margin-bottom: 32px; }
 
-#game_edit_intro_image_area_top {
-  display: flex; }
-
-#game_edit_intro_image_area_bottom {
-  display: flex; }
-
-.game_edit_intro_image_area_element {
-  display: flex;
-  flex-direction: column; }
+.game_edit_submit_area {
+  position: relative;
+  width: 100%; }
+  .game_edit_submit_area .submit_inner {
+    width: 109px;
+    height: 47px; }
+  .game_edit_submit_area button {
+    left: calc(50% - 54.5px); }
 
 /*# sourceMappingURL=games.css.map */

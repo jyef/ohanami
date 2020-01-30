@@ -1,0 +1,23 @@
+<div class="toppage_search_area">
+  <%= form_with url: root_path, method: :get, local: true, class: "searchForm" do |f| %>
+    <%= f.text_field :title, placeholder: "タイトルで検索" %>
+    <span><i class="fas fa-search"></i><input type="submit" value="さがす" class="search_button"></span>
+  <% end %>
+  
+  <div style="position: relative; width: 100%;">
+    <% if request.url.include?("sort=1") %>
+      <% active1, active2 = "active", "" %>
+    <% elsif request.url.include?("sort=2") %>
+      <% active1, active2 = "", "active" %>
+    <% else %>
+      <% active1, active2 = "", "" %>
+    <% end %>
+    <% str = [["新しい", "dsc", "#{active1}"], ["古い", "asc", "#{active2}"]] %>
+    <% str.each_with_index do |x, i| %>
+      <%= form_with url: root_path, method: :get, local: true, class: "form_general" do |f| %>
+        <input type="hidden" name="sort" value="<%= x[2] == "active" ? 0 : i + 1 %>">
+        <div class="order_wrap"><button type="submit" class="order_<%= x[1] %> <%= x[2] %>">登録が<%= x[0] %>順</button></div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

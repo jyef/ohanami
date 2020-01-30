@@ -11,6 +11,20 @@ ja:
         introduction: 自己紹介
         twitter: ツイッターID
         current_password: 現在のパスワード
+      game:
+        title: ゲーム名
+        url: 作品URL
+        icon: アイコン画像
+        genre: ジャンル
+        information: 紹介文
+        play_time: 想定プレー時間
+        intro_image1: 紹介画像
+        intro_image2: 紹介画像
+        intro_image3: 紹介画像
+        intro_image4: 紹介画像
+      update:
+        update_day: 更新日
+        update_info: 更新情報
     errors:
       messages:
         invalid_member_name: は半角英数字で入力してください

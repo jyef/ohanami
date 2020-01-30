@@ -12,11 +12,10 @@
   </div>
   
   <div id="toppange_main_area">
-    <%= form_with url: root_path, method: :get, local: true, class: "searchForm" do |f| %>
-      <%= f.text_field :title, placeholder: "タイトルで検索" %>
-      <span><i class="fas fa-search"></i><input type="submit" value="さがす" class="search_button"></span>
-    <% end %>
+    <%= render 'toppages/search' %>
+    
     <div class="row32"></div>
+    
     <%= render 'toppages/gamecard', games: @games, thisPage: @thisPage %>
   </div>
   

@@ -1,0 +1,31 @@
+<div class="game_show_creator">
+  <div class="game_show_creator_inner">
+    <%= image_tag( game.user.profile_image.url.blank? ? "/assets/default.png" : game.user.profile_image.url , class: "game_show_profile_image" ) %>
+    <div class="creator_nickname">
+      <%= link_to (game.user.nickname.present? ? "#{game.user.nickname} さん" : "ナナシ さん"), user_path(game.user) %>
+      <% unless game.user.twitter.blank? %>
+        <%= link_to "https://twitter.com/#{game.user.twitter}" do %>
+          <i class="fab fa-twitter-square twitter_icon"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <% unless game.user.introduction.blank? %>
+      <div class="creator_introduction">
+        <pre><%= game.user.introduction %></pre>
+      </div>
+    <% end %>
+    <div class="heading">
+      <h3>作品一覧</h3>
+    </div>
+    <% game.user.games.each do |x| %>
+      <%= link_to game_path(x) do %>
+        <div class="creator_games">
+            <%= image_tag( x.icon.url.blank? ? "/assets/default.png" : x.icon.url ) %>
+          <div class="creator_games_inner">
+            <p><%= x.title %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

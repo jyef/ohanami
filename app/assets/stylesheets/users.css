@@ -3,86 +3,72 @@
   display: flex;
   padding: 8px;
   border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.25);
-}
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25); }
 
 #show_profile_image_area {
   font-size: 0;
-  line-height: 0;
-}
+  line-height: 0; }
 
 .profile_img {
   width: 160px;
   height: 160px;
   font-size: 0;
   line-height: 0;
-  object-fit: cover;
-}
+  object-fit: cover; }
 
 #show_name_area {
   display: flex;
   flex-direction: column;
-  justify-content:space-between;
-  padding: 0 32px 0 8px;
-}
+  justify-content: space-between;
+  padding: 0 32px 0 8px; }
 
 #name_area_top {
   width: 224px;
-  max-width: 224px;
-}
+  max-width: 224px; }
 
 #name_area_top p {
   display: inline-block;
   font-size: 1.5rem;
-  font-weight: 700;
-}
+  font-weight: 700; }
 
 #name_area_top i {
   display: inline-block;
-  color: #1da1f2;
-}
+  color: #1da1f2; }
 
 #show_introduction_area {
   flex-grow: 5;
-  background: #f8f8f8;
-}
+  background: #f8f8f8; }
 
 .profile_button {
-    display: inline-block;
-    border: 1px solid #ff1493;
-    padding: 10px 10px;
-    font-size: 16px;
-    border-radius: 4px;
-}
+  display: inline-block;
+  border: 1px solid #ff1493;
+  padding: 10px 10px;
+  font-size: 16px;
+  border-radius: 4px; }
 
 .profile_button i {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 24px;
-    color: #ff1493;
-    margin-right: 4px;
-}
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 24px;
+  color: #ff1493;
+  margin-right: 4px; }
 
 .profile_button p {
-    display: inline-block;
-    vertical-align:middle;
-    font-size: 16px;
-    color: #ff1493;
-}
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  color: #ff1493; }
 
 #user_show_games_area {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  // border: 1px solid gray;
-}
+  box-sizing: border-box; }
 
 #user_show_games_tab_area {
   display: flex;
   width: 100%;
   border-bottom: 4px solid #ff1493;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 #user_show_games_area .tab {
   display: flex;
@@ -94,52 +80,40 @@
   font-size: 20px;
   font-weight: bold;
   border-radius: 10px 10px 0 0;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 #user_show_games_area #tab_link {
- text-decoration: none; 
-}
+  text-decoration: none; }
 
 #user_show_games_area #tab_active {
   color: #fff;
   background: #ff1493;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 #user_show_games_area #tab_inactive {
   color: #8c8c8c;
   background: #f2f2f2;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 #user_show_games_area #tab_inactive:hover {
   color: #fff;
-  background: #ff1493;
-}
+  background: #ff1493; }
 
 #user_show_gameCard_area {
   display: block;
-  width: 685px;
-}
+  width: 685px; }
 
 /* users/:id/reviews */
-#user_show_reviews_area {
-  
-}
-
 .user_show_reviews_title {
   font-size: 16px;
   font-weight: bold;
   color: #3c3c3c;
-  margin: 10px 0 3px;
-}
+  margin: 10px 0 3px; }
 
 .user_show_reviews_title:before {
   border-left: 6px solid #ff1493;
   margin-right: 8px;
-  content: "";
-}
+  content: ""; }
 
 /* users/edit */
 .upload_profile_image_area {
@@ -147,8 +121,7 @@
   width: 160px;
   height: 160px;
   text-align: center;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 .upload_profile_image_area .upload_icon {
   position: absolute;
@@ -165,8 +138,7 @@
   border-radius: 50%;
   opacity: 0.9;
   z-index: 2;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .user_img_field {
   position: absolute;
@@ -178,8 +150,7 @@
   background-size: contain;
   overflow: hidden;
   box-sizing: inherit;
-  z-index: 1;
-}
+  z-index: 1; }
 
 .user_img_field .profile_image_blank {
   position: absolute;
@@ -193,12 +164,10 @@
   background: #f8f8f8;
   border: 2px dashed #c8c8c0;
   border-radius: 5px;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 .user_img_field .profile_image_blank p {
-  font-size: 18px;
-}
+  font-size: 18px; }
 
 .user_edit_profile_image {
   width: 160px;
@@ -206,5 +175,6 @@
   border: 2px dashed #c8c8c0;
   border-radius: 5px;
   box-sizing: border-box;
-  object-fit: cover;
-}
+  object-fit: cover; }
+
+/*# sourceMappingURL=users.css.map */

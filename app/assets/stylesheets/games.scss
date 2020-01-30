@@ -40,40 +40,8 @@
 }
 
 #game_show_left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 240px;
-  padding: 20px 10px 10px 20px;
-  border: 1px solid #ddd;
-  box-sizing: inherit;
-  overflow: hidden;
-  .game_show_profile_image {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-  }
-  .game_show_left_nickname {
-    a {
-      font-size: 16px;
-      font-weight: bold;
-      color: #3c3c3c;
-    }
-    i {
-      font-size: 20px;
-      color: #55acee;
-    }
-  }
-  .game_show_user_games {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    img {
-      width: calc(180px - .1px);
-      height: calc(180px * 0.765 - .1px);
-      object-fit: cover;
-    }
-  }
+  box-sizing: border-box;
 }
 
 #game_show_right {
@@ -83,6 +51,115 @@
   // background: #eee;
   width: 685px;
   box-sizing: inherit;
+}
+
+.game_show_creator {
+  width: 240px;
+  padding: 20px 20px 0 20px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  // box-shadow: 0px 0px 2px 1px rgba(15, 5, 0, 0.2);
+  box-sizing: border-box;
+
+  .game_show_creator_inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    .game_show_profile_image {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 6px;
+      object-fit: cover;
+    }
+    
+    .creator_introduction {
+      width: 200px;
+      border: 1px solid #e6e6e6;
+      margin-bottom: 32px;
+      border-radius: 2px;
+      
+      pre {
+        font-size:12px;
+        color: #737373;
+        padding: 5px;
+      }
+    }
+    
+    .creator_nickname {
+      margin-bottom: 8px;
+      a {
+        font-size: 16px;
+        font-weight: bold;
+        color: #3c3c3c;
+      }
+      i {
+        font-size: 20px;
+        color: #55acee;
+      }
+    }
+    .heading {
+      width: 100%;
+      border-left: 10px solid #ff1493;
+      padding: 5px 0 8px 14px;
+      border-bottom: 1px solid #e6e6e6;
+      margin-bottom: 32px;
+      box-sizing: border-box;
+    }
+    .creator_games {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #e6e6e6;
+      margin-bottom: 32px;
+      // align-items: center;
+      
+      img {
+        background: #fff;
+        // padding-bottom: 6px;
+        // border-left: 4px solid #000;
+        // border-right: 4px solid #000;
+        // border-top: 1px solid #000;
+        // border-bottom: 1px solid #000;
+        width: 196px;
+        height: calc(196px * 0.765);
+        object-fit: cover;
+      }
+        .creator_games_inner {
+          display: inline-block;
+          background: #fff;
+          // border-left: ;
+          border-left: 6px solid #ff1493;
+          // border-bottom: 4px solid #000;
+          // border-right: 4px solid #000;
+          padding: 5px 0px 5px 10px;
+        p {
+          // margin-bottom: 20px;
+          font-weight: bold;
+          background: #fff;
+          // padding-left: 7px;
+          // border-left: 5px solid #ff1493;
+        }
+      }
+    }
+  }
+  .heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    i {
+      // color: #ff1493;
+      margin-right: 4px;
+      font-size: 28px;
+    }
+  }
+  h3 {
+    color: #3c3c3c;
+    font-size: 24px;
+    // border-bottom: solid 3px #14ff82;
+    // position: relative;
+
+
+  }
 }
 
 #game_show_content {
@@ -445,10 +522,69 @@
 }
 
 /* game/:id/edit */
+.game_edit_header {
+
+}
+
+.game_edit_title {
+  display: flex;
+  align-items: center;
+  width: 960px;
+  box-sizing: border-box;
+  .fa-cog {
+    margin-right: 6px;
+    font-size: 2rem;
+    color: #046eb8;
+  }
+  h2 {
+    color: #3c3c3c;
+  }
+}
+
+.game_edit_main {
+  padding-top: 24px;
+  width: 50%;
+  label {
+    color: #3c3c3c;
+  }
+  h4 {
+    color: #3c3c3c;
+  }
+  p {
+    color: #555;
+  }
+  
+  .game_edit_url {
+    font-size: 11px;
+  }
+}
+
+.game_edit_input_ {
+  &title {
+    width: 100%;
+  }
+  &url {
+    width: 100%;
+  }
+  &genre {
+    width: 50%;
+  }
+  &information {
+    width: 100%;
+    height: 11.5em;
+  }
+  &play_time {
+    width: 50%;
+  }
+  &update {
+    width: 100%;
+  }
+}
+
 .upload_game_img_area {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: calc(200px * 0.765);
   text-align: center;
   box-sizing: border-box;
 }
@@ -473,8 +609,8 @@
 
 .img_field {
   position: absolute;
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: calc(200px * 0.765);
   cursor: pointer;
   background-position: center;
   background-repeat: no-repeat;
@@ -490,13 +626,14 @@
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: calc(200px * 0.765);
+  font-size: 16px;
   color: #c8c8c0;
   background: #f8f8f8;
   border: 2px dashed #c8c8c0;
   border-radius: 5px;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 .img_field .game_img_blank p {
@@ -504,25 +641,46 @@
 }
 
 .game_edit_image {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
+  width: 200px;
+  height: calc(200px * 0.765);
+  background: #f8f8f8;
+  border: 2px dashed #c8c8c0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  &_icon {
+    object-fit: cover;
+  }
+  &_intro {
+    object-fit: contain;
+  }
 }
 
 #game_edit_intro_image_area {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  width: 432px;
+  box-sizing: border-box;
+  
+  .game_edit_intro_image_area_element {
+    &:not(:nth-child(2n)) {
+      margin-right: 32px;
+    }
+    &:not(:nth-last-child(-n+2)) {
+      margin-bottom: 32px;
+    }
+  }
 }
 
-#game_edit_intro_image_area_top {
-  display: flex;
-}
-
-#game_edit_intro_image_area_bottom {
-  display: flex;
-}
-
-.game_edit_intro_image_area_element {
-  display: flex;
-  flex-direction: column;
+.game_edit_submit_area {
+  position: relative;
+  width: 100%;
+  
+  .submit_inner {
+    width: 109px;
+    height: 47px;
+  }
+  
+  button {
+    left: calc(50% - 54.5px);
+  }
 }

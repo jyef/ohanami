@@ -1,118 +1,136 @@
 <%= form_with(model: @game, local: true, class: 'form_general') do |f| %>
   
   <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.label :title, "ゲーム名(必須)" %>
+    <%= f.text_field :title, class: "game_edit_input_title" %>
   </div>
   
-  <div>
-    <%= f.label :url %>
-    <%= f.text_field :url %>
-  </div>
+  <div class="row32"></div>
   
+  <%= f.label :icon %>
   <div class="field image upload_game_img_area">
     <i class="fas fa-file-upload upload_icon" onClick="$('#file1').click()"></i>
     <div class="img_field img_field1" onClick="$('#file1').click()" >
       <% if @game.icon.url.present? %>
-        <%= image_tag ( @game.icon.url ), class: "game_edit_image" %>
+        <%= image_tag ( @game.icon.url ), class: "game_edit_image game_edit_image_icon" %>
       <% else %>
-        <div class="game_img_blank"><p>ファイルを選択</p></div>
+        <div class="game_img_blank">ファイルを選択</div>
       <% end %>
     </div>
   </div>
   <%= f.file_field :icon, class: "image", style: "display:none;", id: "file1"%>
+  <div class="row4"></div>
   <p><%= f.check_box :remove_icon %>画像を削除する</p>
+  <div class="row4"></div>
+  <p>画像のサイズは縦横のうち小さい方を基準にして自動的に拡大・縮小され、枠からはみ出した部分はトリミングされます</p>
+  <p>ヨコ・タテ816x624が基準になります</p>
+  <div class="row32"></div>
+  
+  <div>
+    <%= f.label :url %>
+    <%= f.text_field :url, class: "game_edit_input_url", style: "font-size: 14px;" %>
+    <div class="row4"></div>
+    <h4>※アツマールで投稿した作品を公開設定にしている場合</h4>
+    <p>作品ID（gm○○）もしくはゲームページURLの"?"より前の部分をコピーして貼りつけてください</p>
+    <p class="game_edit_url row4">例) gm11804 もしくは https://game.nicovideo.jp/atsumaru/games/gm11804</p>
+    <h4>※アツマールで投稿した作品を公開設定にしている場合</h4>
+    <p>ゲーム画面下の黄色帯、「限定公開に設定されています」の部分からURLをコピーして貼りつけてください</p>
+    <p class="game_edit_url">例) https://game.nicovideo.jp/atsumaru/games/gm11804?key=519d380fe342</p>
+  </div>
+  
+  <div class="row32"></div>
   
   <div>
     <%= f.label :genre %>
-    <%= f.text_field :genre %>
+    <%= f.text_field :genre, list: 'genre_list', class: "game_edit_input_genre" %>
+    <datalist id="genre_list">
+      <option value="RPG">
+      <option value="アドベンチャー">
+      <option value="アクション">
+      <option value="パズル・ボドゲ">
+      <option value="シミュレーション">
+      <option value="教養">
+    </datalist>
+    <div class="row4"></div>
+    <p>選択肢から選ぶか、ジャンル名を入力してください</p>
   </div>
+  
+  <div class="row32"></div>
   
   <div>
     <%= f.label :information %>
-    <%= f.text_area :information %>
+    <%= f.text_area :information, class: "game_edit_input_information" %>
   </div>
+  
+  <div class="row32"></div>
   
   <div>
     <%= f.label :play_time %>
-    <%= f.text_field :play_time %>
+    <%= f.text_field :play_time, list: 'play_time_list', class: "game_edit_input_play_time" %>
+    <datalist id="play_time_list">
+      <option value="5分未満">
+      <option value="5分前後">
+      <option value="10分">
+      <option value="15分">
+      <option value="20分">
+      <option value="30分">
+      <option value="45分">
+      <option value="1時間前後">
+      <option value="1時間以上">
+    </datalist>
+    <div class="row4"></div>
+    <p>選択肢から選ぶか、時間を入力してください</p>
   </div>
-
+  
+  <div class="row32"></div>
+  
+  <%= f.label :intro_image1 %>
   <div id="game_edit_intro_image_area">
-    <div id="game_edit_intro_image_area_top">
+    <% (1..4).each do |i| %>
       <div class="game_edit_intro_image_area_element">
         <div class="field image upload_game_img_area">
-          <i class="fas fa-file-upload upload_icon" onClick="$('#file2').click()" ></i>
-          <div class="img_field img_field2" onClick="$('#file2').click()" >
-            <% if @game.intro_image1.url.present? %>
-              <%= image_tag ( @game.intro_image1.url ), class: "game_edit_image" %>
+          <i class="fas fa-file-upload upload_icon" onClick="$('#file<%= i + 1 %>').click()" ></i>
+          <div class="img_field img_field<%= i + 1 %>" onClick="$('#file<%= i + 1 %>').click()" >
+            <% if @game.send("intro_image#{i}").url.present? %>
+              <%= image_tag ( @game.send("intro_image#{i}").url ), class: "game_edit_image game_edit_image_intro" %>
             <% else %>
-              <div class="game_img_blank"><p>ファイルを選択</p></div>
+              <div class="game_img_blank">紹介画像<%= i %><br>ファイルを選択</div>
             <% end %>
           </div>
         </div>
-        <%= f.file_field :intro_image1, class: "image", style: "display:none;", id: "file2"%>
-        <p><%= f.check_box :remove_intro_image1 %>画像を削除する</p>
+        <%= f.file_field :"intro_image#{i}", class: "image", style: "display:none;", id: "file#{i + 1}" %>
+        <div class="row4"></div>
+        <p><%= f.check_box :"remove_intro_image#{i}" %>画像を削除する</p>
       </div>
-      <div class="game_edit_intro_image_area_element">
-        <div class="field image upload_game_img_area">
-          <i class="fas fa-file-upload upload_icon" onClick="$('#file3').click()" ></i>
-          <div class="img_field img_field3" onClick="$('#file3').click()" >
-            <% if @game.intro_image2.url.present? %>
-              <%= image_tag ( @game.intro_image2.url ), class: "game_edit_image" %>
-            <% else %>
-              <div class="game_img_blank"><p>ファイルを選択</p></div>
-            <% end %>
-          </div>
-        </div>
-        <%= f.file_field :intro_image2, class: "image", style: "display:none;", id: "file3"%>
-        <p><%= f.check_box :remove_intro_image2 %>画像を削除する</p>
-      </div>
-    </div>
-    <div id="game_edit_intro_image_area_bottom">
-      <div class="game_edit_intro_image_area_element">
-        <div class="field image upload_game_img_area">
-          <i class="fas fa-file-upload upload_icon" onClick="$('#file4').click()" ></i>
-          <div class="img_field img_field4" onClick="$('#file4').click()" >
-            <% if @game.intro_image3.url.present? %>
-              <%= image_tag ( @game.intro_image3.url ), class: "game_edit_image" %>
-            <% else %>
-              <div class="game_img_blank"><p>ファイルを選択</p></div>
-            <% end %>
-          </div>
-        </div>
-        <%= f.file_field :intro_image3, class: "image", style: "display:none;", id: "file4"%>
-        <p><%= f.check_box :remove_intro_image3 %>画像を削除する</p>
-      </div>
-      <div class="game_edit_intro_image_area_element">
-        <div class="field image upload_game_img_area">
-          <i class="fas fa-file-upload upload_icon" onClick="$('#file5').click()" ></i>
-          <div class="img_field img_field5" onClick="$('#file5').click()" >
-            <% if @game.intro_image4.url.present? %>
-              <%= image_tag ( @game.intro_image4.url ), class: "game_edit_image" %>
-            <% else %>
-              <div class="game_img_blank"><p>ファイルを選択</p></div>
-            <% end %>
-          </div>
-        </div>
-        <%= f.file_field :intro_image4, class: "image", style: "display:none;", id: "file5"%>
-        <p><%= f.check_box :remove_intro_image4 %>画像を削除する</p>
-      </div>
-    </div>
+    <% end %>
   </div>
-
+  <div class="row4"></div>
+  <p>紹介画像は縦横うち大きい方のサイズに合わせて枠の中央に表示されます</p>
+  
+  <div class="row32"></div>
+  
+  <label>更新情報</label>
   <%= f.fields_for :updates do |u| %>
-    <div>
+    <div style="margin-bottom: 2px;">
       <%= raw sprintf(
         u.date_select(:update_day, start_year: 2020, use_month_numbers: true, date_separator: '%s'),
         '年 ', '月 ') + '日' %>
-      
-      <%= u.text_field :update_info %>
+    </div>
+    <div class="row8">
+      <%= u.text_field :update_info, class: "game_edit_input_update", 
+      placeholder: "例) 姫を助ける前にラスボスを倒すと進行不能になるバグを修正" %>
     </div>
   <% end %>
-
-  <div style="width: 109px; height: 47px;">
-    <%= f.button ( request.path_info == '/games/new' ? '投稿する' : '更新する'), type: 'button', onclick: 'submit();' %>
+  <p>ゲームの更新時にご利用ください</p>
+  
+  <div class="row32"></div>
+  
+  <div class="game_edit_submit_area">
+    <div class="submit_inner">
+      <%= f.button ( request.path_info == '/games/new' ? '投稿する' : '更新する'), type: 'button', onclick: 'submit();' %>
+    </div>
   </div>
+  
+  <div class="row32"></div>
 
 <% end %>

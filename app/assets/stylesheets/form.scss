@@ -67,6 +67,16 @@
     outline: none;
     background: none;
   }
+  input[type="submit"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+  }
 }
 
 

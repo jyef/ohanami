@@ -56,6 +56,15 @@
   border-radius: 4px;
   outline: none;
   background: none; }
+.form_general input[type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer; }
 
 .user_edit_header {
   width: 960px;
