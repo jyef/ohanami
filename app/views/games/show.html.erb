@@ -5,6 +5,9 @@
              ['game_character','キャラ'],
              ['worldview','世界観']
             ] %>
+<% column.each do |x| %>
+<% x.push(@game.stamps.where("#{x[0]}": true).count) %>
+<% end %>
             
 <div class="row"></div>
   <%= render 'layouts/flash_messages' %>
@@ -18,29 +21,7 @@
 <%#------------------------------左枠ここまで------------------------------%>
 <%#------------------------------ここから右枠------------------------------%>
   <div id="game_show_right">
-    <div id="game_show_content">
-      <table>
-        <% column.each_with_index do |x, i| %>
-          <tr><td class="game_show_reviewcount_label"><%= "#{x[1]}：" %></td><td><%= @game.stamps.where("#{x[0]}": true).count %></td>
-          <% break if column.length == i %>
-          </tr>  
-        <% end %>
-        </tr>
-      </table>
-      <p style="font-size: 20px; font-weight: bold;"><%= @game.title %></p>
-      <% if logged_in? && current_user.id == @game.user.id %>
-        <p><%= link_to edit_game_path(@game) do %><i class="fas fa-edit"></i><p>編集する</p><% end %></p>
-      <% end %>
-      <p><%= @game.url %></p>
-      <p><% unless @game.icon.url.blank? %><%= image_tag (@game.icon.url) %><% end %></p>
-      <p><%= @game.genre %></p>
-      <p><%= @game.information %></p>
-      <p><%= @game.play_time %></p>
-      <p><% unless @game.icon.url.blank? %><%= image_tag (@game.intro_image1.url) %><% end %></p>
-      <p><% unless @game.icon.url.blank? %><%= image_tag (@game.intro_image2.url) %><% end %></p>
-      <p><% unless @game.icon.url.blank? %><%= image_tag (@game.intro_image3.url) %><% end %></p>
-      <p><% unless @game.icon.url.blank? %><%= image_tag (@game.intro_image4.url) %><% end %></p>
-    </div>
+    <%= render 'games/content', game: @game, column: column %>
     
     <div id="game_show_stamp_area">
       <div class="textCenter">

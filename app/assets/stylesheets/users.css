@@ -37,7 +37,8 @@
 
 #show_introduction_area {
   flex-grow: 5;
-  background: #f8f8f8; }
+  background: #f8f8f8;
+  padding: 5px; }
 
 .profile_button {
   display: inline-block;
@@ -145,6 +146,7 @@
   width: 160px;
   height: 160px;
   cursor: pointer;
+  background: #f8f8f8;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

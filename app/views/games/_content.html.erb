@@ -1,0 +1,156 @@
+<div class="game_show_content">
+  <% if logged_in? && game.user_id == current_user.id %>
+    <%= link_to edit_game_path(game) do %>
+      <div class="gameEdit_button">
+        <span><i class="fas fa-cog user_show_gameEdit_i"></i><p class="user_show_gameEdit_p">このゲームを編集する</p></span>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="game_show_content_header">
+    <div class="game_show_content_header_left">
+      <div class="game_show_content_header_left_title">
+        <h1><%= game.title %></h1>
+      </div>
+      <div class="game_show_content_header_left_gameinfo">
+        <div class="game_show_content_header_left_gameinfo_e1">
+          <div class="game_show_content_header_left_gameinfo_e1_wrap">
+            <h4>ジャンル</h4>
+            <p><%= game.genre %></p>
+          </div>
+        </div>
+        <div class="game_show_content_header_left_gameinfo_e2">
+          <div class="game_show_content_header_left_gameinfo_e2_wrap">
+            <h4>想定プレー時間</h4>
+            <p><%= game.play_time %></p>
+          </div>
+        </div>
+        <div class="game_show_content_header_left_gameinfo_e3">
+          <div class="game_show_content_header_left_gameinfo_e3_wrap">
+            <h4>投稿日</h4>
+            <p><%= game.created_at.strftime('%Y/%m/%d') %></p>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <div class="game_show_content_header_right">
+      <div class="game_show_content_header_right_badge_title"><%= image_tag "ico_medal6_1.gif" %>
+        <p>獲得バッジ数</p>
+      </div>
+      <div style="display: flex;">
+        <ul style="margin-right: .5em;">
+        <% column.each_with_index do |x, i| %>
+          <li><%= "#{x[1]}" %>&nbsp;</li>
+        <% end %>
+        </ul>
+        <ul class="game_show_content_modal_trigger">
+          <% column.each_with_index do |x, i| %>
+            <li class="game_show_content_modal_btn">
+              <a href="javascript:void(0);" class="<%= "pointer_events_none" if x[2] == 0 %>">
+                <%= x[2] %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+<%#--------------------ここからモーダル作成--------------------%>
+      <% column.each_with_index do |x, i| %>
+        <div class="game_show_content_modal_area">
+          <div class="game_show_content_modal_box">
+            <div class="game_show_content_modal_bg"></div>
+            <section class="game_show_content_modal_inner">
+              <div class="game_show_content_modal_inner_col1">
+                <p><%= x[1] %>に<%= x[2] %>人がバッジを送っています</p>
+                <p class="game_show_content_modal_close">X</p>
+              </div>
+              <div class="game_show_content_modal_inner_col2">
+                <% game.senders.includes(:stamps).where(stamps: {"#{x[0]}": true}).each do |sender| %>
+                <div class="sender_element">
+                  <div style="position: absolute;
+                              top: 48px;
+                              width: calc((1em * <%= sender.nickname.blank? ? 3 : sender.nickname.length %>) + 2em);">
+                    <p><%= sender.nickname.blank? ? "ナナシさん" : "#{sender.nickname}さん" %></p>
+                  </div>
+                  <%= link_to user_path(sender) do %>
+                    <%= image_tag ( sender.profile_image.blank? ? "/assets/default.png" : sender.profile_image.url ) %>
+                  <% end %>
+                </div>
+                <% end %>
+              </div>
+            </section>
+          </div>
+        </div>
+      <% end %>
+<%#--------------------モーダル作成ここまで--------------------%>
+    </div>
+  </div>
+  <div class="row8"></div>
+    <% if game.url.present? %>
+      <div class="game_show_content_url">
+        <%= link_to 'プレーする', game.url, id: "game_show_content_playbtn", target: "_blank" %>
+        <p><%= game.url %></p>
+      </div>
+    <div class="row8"></div>
+    <% end %>
+    
+<%#--------------------ここからスライダー-------------------%>
+    <% images = ["icon", "intro_image1",  "intro_image2",  "intro_image3",  "intro_image4"] %>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <% images.each do |image| %>
+          <% if game.send("#{image}").present? %>
+            <% url = game.send("#{image}").url %>
+            <% if image == 'icon' %>
+              <div class="swiper-slide" style="background-image: url(<%= url %>); background-size: cover;"></div>
+            <% else %>
+              <div class="swiper-slide" style="background-image: url(<%= url %>);"></div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+     
+    <div class="swiper-pagination-thumbs"></div>
+    <script>
+    var thumb = [
+    <% images.each do |image| %>
+      <% if game.send("#{image}").present? %>
+        <% url = game.send("#{image}").url %>
+        '<%= url %>',
+      <% end %>
+    <% end %>
+    ];
+    var mySwiper = new Swiper('.swiper-container', {
+        pagination: {
+            bulletClass:'swiper-pagination-thumb',
+            bulletActiveClass:'swiper-pagination-thumb-active',
+            el: '.swiper-pagination-thumbs',
+            clickable: true,
+            renderBullet: function (index, className) {
+              return '<span class="' + className + '" style="background-image:url('+ thumb[index] +');"></span>';
+            },
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+         loop: true,
+    });
+    </script>
+<%#--------------------スライダーここまで-------------------%>
+    <div class="row"></div>
+    <pre><%= game.information %></pre>
+    
+    <% if game.updates.present? %>
+      <div class="row"></div>
+      <h4>更新情報</h4>
+      <% game.updates.each do |update| %>
+      <div class="game_show_content_updates">
+        <div><%= update.update_day.strftime('%Y/%m/%d') %>&nbsp;</div>
+        <div><%= update.update_info %></div>
+      </div>
+      <% end %>
+    <% end %>
+    <div class="row32"></div>
+</div>

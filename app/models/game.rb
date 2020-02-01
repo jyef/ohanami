@@ -6,6 +6,7 @@ class Game < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :reviewers, through: :reviews, source: :user 
   has_many :stamps, dependent: :destroy
+  has_many :senders, through: :stamps, source: :user
   
   accepts_nested_attributes_for :updates, reject_if: :reject_blank, allow_destroy: true
   
