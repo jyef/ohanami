@@ -67,6 +67,11 @@
     box-sizing: inherit; }
     #toppage #toppage_header_area #logo {
       margin-top: 16px; }
+    #toppage #toppage_header_area .toppage_header_area_banner {
+      width: 650px;
+      height: 114px;
+      background-image: url("/assets/banner.png");
+      margin-top: 20px; }
   #toppage #toppange_main_area {
     float: left;
     width: 685px;
@@ -224,5 +229,57 @@
     vertical-align: middle;
     font-size: 15px;
     color: #ff1493; }
+
+.toppgage_modal_inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 30px;
+  background: #fff;
+  height: 88vh;
+  overflow: scroll; }
+  .toppgage_modal_inner_logo_area {
+    display: flex;
+    justify-content: center; }
+  .toppgage_modal_inner_title_area h2 {
+    position: relative;
+    border-bottom: 3px solid #e6e6e6;
+    padding-bottom: 4px; }
+    .toppgage_modal_inner_title_area h2::after {
+      position: absolute;
+      content: " ";
+      display: block;
+      border-bottom: solid 3px #ff1493;
+      bottom: -3px;
+      width: 25%; }
+  .toppgage_modal_inner_content_area {
+    padding: 20px 10px 10px 10px; }
+    .toppgage_modal_inner_content_area h3 {
+      margin-bottom: 2px; }
+    .toppgage_modal_inner_content_area p {
+      color: #3c3c3c; }
+  .toppgage_modal_inner_button_area {
+    display: flex;
+    justify-content: center; }
+    .toppgage_modal_inner_button_area .button-signup {
+      padding: 10px; }
+
+#atsumaru_link:link {
+  color: #0033cc;
+  text-decoration: none; }
+#atsumaru_link:visited {
+  color: #0033cc;
+  text-decoration: none; }
+#atsumaru_link:hover {
+  text-decoration: underline; }
+
+.toppgage_modal_close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer; }
 
 /*# sourceMappingURL=toppage.css.map */

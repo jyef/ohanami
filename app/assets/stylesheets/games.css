@@ -365,43 +365,43 @@
 
 #game_show_stamp_area_stamps #part1_true {
   filter: grayscale(0);
-  background-image: url("/assets/story.png");
+  background-image: url("/assets/story");
   background-size: contain; }
 
 #game_show_stamp_area_stamps #part2 {
-  background-image: url("/assets/story.png");
+  background-image: url("/assets/game_system.png");
   background-size: contain; }
 
 #game_show_stamp_area_stamps #part2_true {
   filter: grayscale(0);
-  background-image: url("/assets/story.png");
+  background-image: url("/assets/game_system.png");
   background-size: contain; }
 
 #game_show_stamp_area_stamps #part3 {
-  background-image: url("/assets/story.png");
+  background-image: url("/assets/graphic.png");
   background-size: contain; }
 
 #game_show_stamp_area_stamps #part3_true {
   filter: grayscale(0);
-  background-image: url("/assets/story.png");
+  background-image: url("/assets/graphic.png");
   background-size: contain; }
 
 #game_show_stamp_area_stamps #part4 {
-  background-image: url("/assets/story.png");
+  background-image: url("/assets/character.png");
   background-size: contain; }
 
 #game_show_stamp_area_stamps #part4_true {
   filter: grayscale(0);
-  background-image: url("/assets/story.png");
+  background-image: url("/assets/character.png");
   background-size: contain; }
 
 #game_show_stamp_area_stamps #part5 {
-  background-image: url("/assets/story.png");
+  background-image: url("/assets/worldview.png");
   background-size: contain; }
 
 #game_show_stamp_area_stamps #part5_true {
   filter: grayscale(0);
-  background-image: url("/assets/story.png");
+  background-image: url("/assets/worldview.png");
   background-size: contain; }
 
 #game_show_stamp_area_stamps #part1:hover {

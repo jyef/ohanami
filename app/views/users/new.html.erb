@@ -18,12 +18,12 @@
       <tbody>
         <tr>
           <td class="signup-td-first"><p class="signup-label"><%= f.label :email, 'メールアドレス：' %></p></td>
-          <td><%= f.email_field :email, class: 'signup-email-field' %></td>
+          <td><%= f.email_field :email, class: 'signup-email-field', placeholder: "架空のメールアドレスでOKです" %></td>
         </tr>
         <tr>
           <td class="signup-td-first">
             <p class="signup-label"><%= f.label :password, 'パスワード：' %></p>
-            <p>半角英数記号6〜32字以内</P>
+            <p>半角英数記号1〜32字以内</P>
           </td>
           <td>
             <%= f.password_field :password, class: 'signup-password-field row8' %>

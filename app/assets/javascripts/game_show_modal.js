@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function () {
     $('.game_show_content_modal_area .game_show_content_modal_box').eq(btnIndex).fadeIn(0);
   });
 
-  $('.game_show_content_modal_close , .game_show_content_modal_bg , .sender_element').click(function(){
+  $('.game_show_content_modal_close , .toppgage_modal_close , .game_show_content_modal_bg , .sender_element').click(function(){
     $('.game_show_content_modal_box').hide();
   });
 });

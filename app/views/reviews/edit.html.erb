@@ -1,14 +1,32 @@
-<%= form_with(model: @review, local: true) do |f| %>
-  <div>
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-  </div>
+<div class="review_edit_header">
+  <%= link_to root_path do %><%= image_tag "logo_small.png", class: "form_logo" %><% end %>
+  <div class="row"></div>
+    <%= render 'layouts/flash_messages' %>
+  <div class="row"></div>
+</div>
+
+<div class="review_edit_title">
+  <i class="fas fa-cog"></i><h2>コメント編集</h2>
+</div>
+
+<div class="review_edit_main">
   
-  <div>
-    <%= f.label :spoiler %>
-    <%= f.check_box :spoiler %>
-  </div>
-  
-  <%= hidden_field_tag :referer, request.referer %>
-  <%= f.button '更新する', type: 'button', onclick: 'submit();', class: 'btn btn-primary' %>
-<% end %>
+  <%= form_with(model: @review, local: true, class: "form_general") do |f| %>
+    <%= hidden_field_tag :referer, request.referer %>
+    
+      <div class="review_post_area_right">
+        <div class="row-2">
+          <%= f.text_area :content %>
+        </div>
+        <div class="row-3">
+          <%= f.check_box :spoiler %>
+          <p>ネタバレを含む</p>
+          <div style="width: 109px; height: 47px;">
+            <%= f.button '更新する', type: 'button', onclick: 'submit();' %>
+          </div>
+        </div>
+      </div>
+    
+  <% end %>
+
+</div>

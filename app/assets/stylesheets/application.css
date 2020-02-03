@@ -87,7 +87,13 @@
   .row32 {
    display: flex;
    margin-bottom: 32px;
-  }  
+  }
+  
+  pre {
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
   
 /* フォームデザイン*/
 /* セレクトボックスのデザイン統一 */
@@ -165,6 +171,7 @@ select:-moz-focusring {
   position: relative;
   text-align: center;
   background: #fff;
+  white-space: nowrap;
 }
 
 .flash-message-success {

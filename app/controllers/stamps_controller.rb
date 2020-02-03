@@ -3,22 +3,18 @@ class StampsController < ApplicationController
   before_action :booleancast
   
   def create
-    game = Game.find(params[:game_id])
-    if current_user.have_stamp?(game)
-      stamp = current_user.stamps.find_by(game_id: game.id)
-      if stamp.update(stamp_params)
-        redirect_to game
-      else
+    @game = Game.find(params[:game_id])
+    if current_user.have_stamp?(@game)
+      stamp = current_user.stamps.find_by(game_id: @game.id)
+      unless stamp.update(stamp_params)
         flash.now[:danger] = '送信に失敗しました。'
-        rander game
+        rander @game
       end
     else
       stamp = current_user.stamps.build(stamp_params)
-      if stamp.save
-        redirect_to game
-      else
+      unless stamp.save
         flash.now[:danger] = '送信に失敗しました。'
-        rander game
+        rander @game
       end
     end
   end

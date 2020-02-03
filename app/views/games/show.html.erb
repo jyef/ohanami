@@ -24,33 +24,7 @@
     <%= render 'games/content', game: @game, column: column %>
     
     <div id="game_show_stamp_area">
-      <div class="textCenter">
-        <h2>バッジを送る</h2>
-        <p>特に良かったと思うものを選ぼう！(複数選択可)</p>
-      </div>
-      <div class="row"></div>
-      <% if logged_in? %>
-        <div id="game_show_stamp_area_stamps">
-          <% column.each_with_index do |x, i| %>
-            <%= form_with(model: current_user.stamps.build, local: true) do |f| %>
-              <% if current_user.have_stamp?(@game) && current_user.stamps.find_by(game_id: @game.id).send("#{x[0]}") == true %>
-                <%= hidden_field_tag :"#{x[0]}", false %>
-                <% col_boolean = '_true' %>
-              <% else %>
-                <%= hidden_field_tag :"#{x[0]}", true %>
-              <% end %>
-              <%#= hidden_field_tag :game_id, @game.id %>
-              <input type="hidden" name="game_id" value=<%= @game.id %>>
-              <button class="game_show_stamp_part" id="part<%= i + 1 %><%= col_boolean %>" type="submit"><p><%= x[1] %></p></button>
-            <% end %>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="game_show_area_need_login">
-          <p>バッジを送るには、ログインが必要です。</p>
-          <p><%= link_to "ログインする", login_path %></p>
-        </div>
-      <% end %>
+      <%= render 'games/stamp', game: @game, column: column %>
     </div>
     
     <div class="row32"></div>
@@ -133,33 +107,8 @@
             <% end %>
           </div>
           
-          <div class="review_list_right_bottom">
-            <% if logged_in? && review.user_id == current_user.id %>
-              <%= link_to edit_review_path(id: review.id) do %><i class="fas fa-edit"></i><% end %>
-                <%= form_with(model: current_user.reviews.find_by(id: review.id), local: true, method: :delete) do |f| %>
-                  <button type="submit" onclick="return confirm('削除しますか？')"><i class="fas fa-trash-alt"></i></button>
-                <% end %>
-              <% end %>
-              <% if logged_in? %>
-                <% if current_user.likeit?(review) %>
-                  <%= form_with(model: review.likes.find_by(review_id: review.id), local: true, method: :delete) do |f| %>
-                    <input type="hidden" name="review_id" value=<%= review.id %>>
-                    <%= button_tag type: 'submit' do %>
-                      <i class="fas fa-heart fa-heart-on"></i>
-                    <% end %>
-                  <% end %>
-                <% else %>
-                  <%= form_with(model: review.likes.build, local: true) do |f| %>
-                    <input type="hidden" name="review_id" value=<%= review.id %>>
-                    <%= button_tag type: 'submit' do %>
-                      <i class="fas fa-heart fa-heart-off"></i>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              <% else %>
-                <button onClick="disp()"><i class="fas fa-heart"></i></button>
-              <% end %>
-              <p><%= "#{review.likes.count}" %></p><p>いいね</p>
+          <div class="review_list_right_bottom" id="review_list_right_bottom_<%= review.id %>">
+            <%= render 'games/review_list_right_bottom', review: review %>
           </div>
           
         </div>

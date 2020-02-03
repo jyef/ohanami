@@ -1,0 +1,34 @@
+<% column = [
+             ['story','ストーリー'],
+             ['game_system','システム'],
+             ['graphic','グラフィック'],
+             ['game_character','キャラ'],
+             ['worldview','世界観']
+            ] %>
+            
+<div class="textCenter">
+  <h2>バッジを送る</h2>
+  <p>特に良かったと思うものを選ぼう！(複数選択可)</p>
+</div>
+<div class="row"></div>
+<% if logged_in? %>
+  <div id="game_show_stamp_area_stamps">
+    <% column.each_with_index do |x, i| %>
+      <%= form_with(model: current_user.stamps.build, remote: true) do |f| %>
+        <% if current_user.have_stamp?(game) && current_user.stamps.find_by(game_id: game.id).send("#{x[0]}") == true %>
+          <%= hidden_field_tag :"#{x[0]}", false %>
+          <% col_boolean = '_true' %>
+        <% else %>
+          <%= hidden_field_tag :"#{x[0]}", true %>
+        <% end %>
+        <input type="hidden" name="game_id" value=<%= game.id %>>
+        <button class="game_show_stamp_part" id="part<%= i + 1 %><%= col_boolean %>" type="submit"><p><%= x[1] %></p></button>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="game_show_area_need_login">
+    <p>バッジを送るには、ログインが必要です。</p>
+    <p><%= link_to "ログインする", login_path %></p>
+  </div>
+<% end %>

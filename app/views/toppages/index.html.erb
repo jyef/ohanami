@@ -3,7 +3,11 @@
   <div id="toppage_header_area">
     <div style="display: flex; justify-content: space-between;">
       <%= link_to root_path do %><%= image_tag "logo_small.png", id: "logo" %><% end %>
-      <div style="width: 650px; height: 114px; background: #ddd; margin-top: 20px;">仮置き</div>
+      <div class="game_show_content_modal_trigger">
+        <a href="javascript:void(0);" class="game_show_content_modal_btn">
+          <div class="toppage_header_area_banner"></div>
+        </a>
+      </div>
     </div>
     
     <div class="row"></div>
@@ -32,3 +36,43 @@
     </div>
   </div>
 </div>
+<%#--------------------ここからモーダル作成--------------------%>
+<div class="game_show_content_modal_area">
+  <div class="game_show_content_modal_box">
+    <div class="game_show_content_modal_bg"></div>
+    <i class="fas fa-times toppgage_modal_close"></i>
+    <section class="toppgage_modal_inner">
+      <p style="color: red; font-size: 16px; font-weight: bold;">※本サイトは架空のイベント企画サイトです※</p>
+      <div class="toppgage_modal_inner_logo_area">
+        <%= image_tag "/assets/logo_small.png" %>
+      </div>
+      <div class="toppgage_modal_inner_title_area">
+        <h2>イベント概要</h2>
+      </div>
+      <div class="toppgage_modal_inner_content_area">
+        <h3>RPGアツマール 自主コンテスト みんなでお花見とは？</h3>
+        <p>期間内にお題に沿ったゲームを作って、
+        <%= link_to "RPGアツマール", "https://site.nicovideo.jp/atsumaru/about/", id: "atsumaru_link", target: "_blank" %>に投稿するイベントです。<br>
+        参加は誰でもOK。本サイトにユーザー登録をして、作品情報を所定のフォームに入力するだけで参加できます。
+        もちろんプレーのみの方も大歓迎です。みんなでゲームをプレーして、感想を書き合いましょう！</p>
+        <div class="row"></div>
+        <h3>募集内容</h3>
+        <p>お題は<span style="color: #ff1493; font-size: 20px; font-weight: bold;">「フェス（お祭り）」</span></p>
+        <p>お題についてはこじつけで大丈夫です！
+        ジャンルはなんでもOK！</p>
+        <div class="row"></div>
+        <h3>受付期間</h3>
+        <p>〜20020年4月1日</p>
+      </div>
+      <div class="toppgage_modal_inner_button_area">
+        <%= link_to signup_path , class: 'button-signup-link' do %>
+          <div class="button-signup">
+            <span>今すぐユーザー登録</span>
+            <span class="text-button">新規ユーザー登録</span>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</div>
+<%#--------------------モーダル作成ここまで--------------------%>
