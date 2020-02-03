@@ -3,15 +3,15 @@ class ReviewsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   
   def create
-    game = Game.find(params[:game_id])
+    @game = Game.find(params[:game_id])
     review = current_user.reviews.build(review_params)
-    review.game_id = game.id 
+    review.game_id = @game.id 
     if review.save
       flash[:success] = '感想を投稿しました。'
-      redirect_to game
+      redirect_to @game
     else
-      flash.now[:danger] = '投稿に失敗しました。'
-      rander game
+      flash.now[:danger] = '感想の投稿に失敗しました（1文字以上入力してください）。'
+      render template: "games/show"
     end
   end
   
@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
         redirect_to myreviews_user_path(@review.user_id)
       end
     else
-      flash.now[:danger] = "感想は更新されませんでした。"
+      flash.now[:danger] = "感想は更新されませんでした（1文字以上入力してください）。"
       render :edit
     end
   end

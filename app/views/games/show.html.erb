@@ -77,7 +77,7 @@
       <div id="review_list">
         
         <div class="review_list_left">
-          <%= image_tag( review.user.profile_image.url ) %>
+          <%= image_tag( review.user.profile_image.present? ? review.user.profile_image.url : "/assets/default.png" ) %>
         </div>
         
         <div class="review_list_right">

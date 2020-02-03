@@ -23,7 +23,7 @@
       <a href="<%= game_path(review.game_id) %>"><p class="user_show_reviews_title"><%= Game.find(review.game_id).title %></p></a>
       <div id="review_list">
         <div class="review_list_left">
-          <%= image_tag( review.user.profile_image.url ) %>
+          <%= image_tag( review.user.profile_image.present? ? review.user.profile_image.url : "/assets/default.png" ) %>
         </div>
         <div class="review_list_right">
           <div class="review_list_right_top">
