@@ -4,7 +4,7 @@
     <div class="creator_nickname">
       <%= link_to (game.user.nickname.present? ? "#{game.user.nickname} さん" : "ナナシ さん"), user_path(game.user) %>
       <% unless game.user.twitter.blank? %>
-        <%= link_to "https://twitter.com/#{game.user.twitter}" do %>
+        <%= link_to "https://twitter.com/#{game.user.twitter}", target: "_blank"  do %>
           <i class="fab fa-twitter-square twitter_icon"></i>
         <% end %>
       <% end %>

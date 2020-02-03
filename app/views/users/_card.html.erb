@@ -14,7 +14,7 @@
       </p>
       
       <% unless user.twitter.blank? %>
-        <%= link_to "https://twitter.com/#{user.twitter}" do %>
+        <%= link_to "https://twitter.com/#{user.twitter}", target: "_blank" do %>
           <i class="fab fa-twitter-square twitter_icon fa-2x"></i>
         <% end %>
       <% end %>
