@@ -696,6 +696,11 @@
   #game_edit_intro_image_area .game_edit_intro_image_area_element:not(:nth-last-child(-n+2)) {
     margin-bottom: 32px; }
 
+#game_edit_del_game a:link {
+  color: red; }
+#game_edit_del_game a:visited {
+  color: red; }
+
 .game_edit_submit_area {
   position: relative;
   width: 100%; }

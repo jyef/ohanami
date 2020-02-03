@@ -127,6 +127,14 @@
   
   <div class="row32"></div>
   
+  <% if @game.id.present? %>
+    <label>作品情報の削除</label>
+    <p id="game_edit_del_game"><%= link_to '作品情報を削除する', @game, method: :delete, onclick: "return confirm('本当に削除しますか？')" %></p>
+    <p>※注意※作品情報がサイトから削除されます</p>
+  <% end %>
+  
+  <div class="row32"></div>
+  
   <div class="game_edit_submit_area">
     <div class="submit_inner">
       <%= f.button ( request.path_info == '/games/new' ? '投稿する' : '更新する'), type: 'button', onclick: 'submit();' %>

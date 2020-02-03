@@ -45,6 +45,11 @@ class GamesController < ApplicationController
   end
   
   def destroy
+    @game = Game.find(params[:id])
+    @game.destroy
+    
+    flash[:success] = '作品情報は正常に削除されました。'
+    redirect_to user_path(current_user)
   end
   
 private

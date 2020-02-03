@@ -875,6 +875,17 @@
   }
 }
 
+#game_edit_del_game {
+  a{
+    &:link {
+      color: red;
+    }
+    &:visited {
+      color: red;
+    }
+  }
+}
+
 .game_edit_submit_area {
   position: relative;
   width: 100%;
