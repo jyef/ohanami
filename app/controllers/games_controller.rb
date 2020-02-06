@@ -16,7 +16,7 @@ class GamesController < ApplicationController
   end
   
   def create
-    
+    slice_url
     @game = current_user.games.build(game_params)
     if @game.save
       flash[:success] = 'ゲーム情報を投稿ました。'
