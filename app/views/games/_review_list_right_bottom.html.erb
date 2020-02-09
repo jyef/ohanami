@@ -18,14 +18,14 @@
       <% end %>
     <% end %>
   <% else %>
-    <%= form_with(model: review.likes.build, remote: true) do |f| %>
+    <%= form_with(model: review.likes.build, html: {name: "#{heart}"}, remote: true) do |f| %>
       <input type="hidden" name="review_id" value=<%= review.id %>>
       <input type="hidden" name="heart" value=<%= heart %>>
-      <%= button_tag type: 'submit' do %>
+      <%#= button_tag type: 'submit' do %>
         <div class="heart_wrap">
          <div id="<%= heart %>" class="heart"></div>
         </div>
-      <% end %>
+      <%# end %>
     <% end %>
   <% end %>
 <% else %>
@@ -33,7 +33,7 @@
 <% end %>
 <p><%= "#{review.likes.count}" %></p><p>いいね</p>
 <script>
-  let <%= heart %> = lottie.loadAnimation({
+  var <%= heart %> = lottie.loadAnimation({
   container: document.getElementById('<%= heart %>'),
   renderer: 'svg',
   loop: false,
@@ -42,11 +42,14 @@
   });
 
   document.getElementById('<%= heart %>').addEventListener("click" , function(){
-    const heart = document.getElementById('<%= heart %>');
+    var heart = document.getElementById('<%= heart %>');
     if (!heart.classList.contains("clicked")) {
       heart.classList.add('clicked');
       <%= heart %>.stop();
       <%= heart %>.play();
+      setTimeout(function(){
+      $("#<%= heart %>").trigger("submit.rails");
+      },300);
     }
   });
 </script>
