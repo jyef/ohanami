@@ -20,6 +20,7 @@
     
     <div id="user_show_reviews_area">
       <% @user.reviews.each do |review| %>
+      <% heart = "heart#{review.id}" %>
       <a href="<%= game_path(review.game_id) %>"><p class="user_show_reviews_title"><%= Game.find(review.game_id).title %></p></a>
       <div id="review_list">
         <div class="review_list_left">
@@ -51,7 +52,7 @@
             <% end %>
           </div>
           <div class="review_list_right_bottom" id="review_list_right_bottom_<%= review.id %>">
-            <%= render 'games/review_list_right_bottom', review: review %>
+            <%= render 'games/review_list_right_bottom', review: review, heart: heart %>
           </div>
         </div>
       </div>

@@ -73,6 +73,7 @@
     </div>
     
     <% @game.reviews.each do |review| %>
+    <% heart = "heart#{review.id}" %>
       <div id="anchor<%= review.id %>"></div>
       <div id="review_list">
         
@@ -108,7 +109,7 @@
           </div>
           
           <div class="review_list_right_bottom" id="review_list_right_bottom_<%= review.id %>">
-            <%= render 'games/review_list_right_bottom', review: review %>
+            <%= render 'games/review_list_right_bottom', review: review, heart: heart %>
           </div>
           
         </div>

@@ -680,8 +680,6 @@
   cursor: pointer;
   font-size: 20px;
   color: #8e8e8e;
-  // background-color: #f5f5f5;
-  // box-shadow: 0 0 2px gray;
   border-radius: 4px;
   transform-origin: 50% 50%;
 }
@@ -707,16 +705,35 @@
 	appearance: none;
 }
 
-.review_list_right_bottom .fa-heart {
-  margin-right: 0px;
+.review_list_right_bottom .heart_wrap {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 5px;
+  cursor: pointer;
+  transform-origin: 50% 50%;
 }
-
-.review_list_right_bottom .fa-heart-on {
-  color: #f92711;
+.review_list_right_bottom .heart {
+  position: absolute;
+  vertical-align: middle;
+  width: 64px;
+  height: 64px;
+  top: calc(-32px + 50%);
+  left: calc(-32px + 50%);
+  filter: grayscale(100%);
+  opacity: 0.5;
+  &:hover {
+    transform: scale(1.4,1.4);
+    transition-duration: 0.3s;
+  }
 }
-
-.review_list_right_bottom .fa-heart-off {
-  color: #8e8e8e;
+  
+.review_list_right_bottom .clicked {
+  filter: grayscale(0);
+  opacity: 1;
 }
 
 .edited::after {
