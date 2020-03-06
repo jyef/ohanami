@@ -1,24 +1,9 @@
-# README
+https://www.ohanami.work/
+内容としては、ゲーム制作コンテストのイベントサイト（架空の）です。
+プレイヤー同士がお互いのゲームをプレーしあうのを目的としております。 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+創作の中でもゲーム制作は時間がかかる割にはなかなか反応を得づらいものです。
+なぜかというと プレーするほうも時間がかかる 感想を書くという行為はハードルが高い といった事情があるからです。
+プレイヤーのほうも折角プレーに時間を使ったからには何らかの反応を示したいと思っているもので、
+そういった製作者とプレイヤーの両者の事情を解決するために 制作期間を区切ることによってお手軽な内容にする
+あなたのゲームをプレーしましたよと簡単に意思表示ができる機能を用意する という解決策を立案し、サイトに盛り込みました。
